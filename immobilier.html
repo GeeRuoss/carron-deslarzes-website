@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carron + Deslarzes — Immobilier & Terrains</title>
+
+  <style>
+    /* ── FONTS ──────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'NewBlack';
+      src: url('fonts/NewBlackTypeface-Regular.woff2') format('woff2'),
+           url('fonts/NewBlackTypeface-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'NewBlack';
+      src: url('fonts/NewBlackTypeface-UltraLight.woff2') format('woff2'),
+           url('fonts/NewBlackTypeface-UltraLight.woff') format('woff');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── RESET & VARIABLES ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    :root {
+      --black:   #0a0a0a;
+      --dark:    #141414;
+      --mid:     #3a3a3a;
+      --muted:   #787878;
+      --light:   #c8c8c8;
+      --pale:    #f0f0f0;
+      --white:   #ffffff;
+      --accent:  #3a7d44;
+      --border:  rgba(0,0,0,0.1);
+    }
+
+    /* ── BASE ───────────────────────────────────────────────── */
+    body {
+      font-family: 'NewBlack', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 100; color: var(--black); background: var(--white);
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, h5 {
+      font-family: 'NewBlack', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 400; line-height: 1; letter-spacing: -0.02em;
+    }
+    p { font-weight: 100; line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .label {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    /* ── NAVIGATION ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 68px; background: var(--white);
+      border-bottom: 1px solid var(--border);
+      transition: height 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled { height: 56px; box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+    .nav-logo { display: flex; align-items: center; height: 32px; }
+    .nav-logo svg { height: 28px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--mid); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta {
+      background: var(--black) !important; color: var(--white) !important;
+      padding: 9px 20px !important; letter-spacing: 0.15em !important;
+    }
+    .nav-cta:hover { background: var(--mid) !important; }
+
+    /* ── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'NewBlack', sans-serif;
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 14px 28px; transition: all 0.22s ease;
+      cursor: pointer; border: none;
+    }
+    .btn-dark { background: var(--black); color: var(--white); }
+    .btn-dark:hover { background: var(--mid); }
+    .btn-outline { background: transparent; color: var(--black); border: 1px solid var(--black); }
+    .btn-outline:hover { background: var(--black); color: var(--white); }
+    .btn-white { background: var(--white); color: var(--black); }
+    .btn-white:hover { background: var(--pale); }
+
+    /* ── SECTION UTILITIES ──────────────────────────────────── */
+    .sec-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .sec-eyebrow-line { width: 24px; height: 1px; background: var(--accent); }
+    .sec-title {
+      font-size: clamp(32px, 3.5vw, 52px); font-weight: 400;
+      letter-spacing: -0.03em; line-height: 1; color: var(--black); margin-bottom: 24px;
+    }
+    .sec-title .light { font-weight: 100; color: var(--muted); }
+
+    /* ── PAGE HERO ──────────────────────────────────────────── */
+    .page-hero {
+      min-height: 400px; background: var(--black);
+      display: grid; grid-template-columns: 56px 1fr 480px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative; overflow: hidden;
+    }
+    .page-hero-side { border-right: 1px solid rgba(255,255,255,0.06); }
+    .page-hero-content { padding: 140px 72px 64px; position: relative; z-index: 2; }
+    .page-hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .page-hero-eyebrow .line { width: 32px; height: 1px; background: var(--accent); }
+    .page-hero-eyebrow .lbl {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.25em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+    }
+    .page-hero h1 {
+      font-size: clamp(40px, 6vw, 80px); font-weight: 400; color: var(--white);
+      letter-spacing: -0.03em; line-height: 0.95; margin-bottom: 28px;
+    }
+    .page-hero h1 .light { font-weight: 100; }
+    .page-hero-desc {
+      font-size: 14px; font-weight: 100; color: rgba(255,255,255,0.45);
+      line-height: 1.85; max-width: 400px; margin-bottom: 36px;
+    }
+    .page-hero-stats {
+      display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px; margin-top: 4px;
+    }
+    .ph-stat { padding-right: 28px; margin-right: 28px; border-right: 1px solid rgba(255,255,255,0.06); }
+    .ph-stat:last-child { border-right: none; }
+    .ph-stat-num { font-size: 22px; font-weight: 400; color: var(--white); letter-spacing: -0.02em; line-height: 1; }
+    .ph-stat-lbl { font-size: 9px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 6px; }
+    .page-hero-photos { display: grid; grid-template-rows: 1fr 1fr; gap: 3px; overflow: hidden; }
+    .page-hero-photos div { overflow: hidden; }
+    .page-hero-photos div img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+    .page-hero-photos div:hover img { transform: scale(1.04); }
+
+    /* ── BREADCRUMB ──────────────────────────────────────────── */
+    .breadcrumb {
+      display: grid; grid-template-columns: 56px 1fr;
+      border-bottom: 1px solid var(--border); background: var(--pale);
+    }
+    .breadcrumb-side { border-right: 1px solid var(--border); }
+    .breadcrumb-inner {
+      padding: 14px 80px; display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 100; color: var(--muted);
+    }
+    .breadcrumb-inner a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb-inner a:hover { color: var(--black); }
+    .breadcrumb-sep { color: var(--light); }
+    .breadcrumb-current { color: var(--black); font-weight: 400; }
+
+    /* ── INTRO STRIP ────────────────────────────────────────── */
+    .intro-strip {
+      display: grid; grid-template-columns: 56px 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .intro-strip-side { border-right: 1px solid var(--border); background: var(--pale); }
+    .intro-strip-text { padding: 72px 64px; border-right: 1px solid var(--border); }
+    .intro-strip-aside { padding: 72px 56px; display: flex; flex-direction: column; justify-content: flex-end; }
+    .intro-strip-aside p { font-size: 13px; font-weight: 100; color: var(--muted); line-height: 1.8; }
+
+    /* ── SERVICE BLOCK ──────────────────────────────────────── */
+    .svc-block {
+      display: grid; grid-template-columns: 56px 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+      min-height: 520px;
+    }
+    .svc-block-side {
+      border-right: 1px solid var(--border);
+      background: var(--pale);
+      position: relative;
+    }
+    .svc-block-num {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px; font-weight: 400; letter-spacing: 0.2em;
+      color: var(--muted); text-transform: uppercase;
+    }
+    .svc-block-photo {
+      overflow: hidden; position: relative;
+    }
+    .svc-block-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+    .svc-block:hover .svc-block-photo img {
+      transform: scale(1.04);
+    }
+    .svc-block-photo-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--black); color: var(--white);
+      padding: 10px 16px; font-size: 9px; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .svc-block-content {
+      padding: 64px 64px 64px 56px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-left: 1px solid var(--border);
+    }
+    .svc-block-index {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .svc-block h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400; letter-spacing: -0.02em;
+      color: var(--black); margin-bottom: 20px; line-height: 1.05;
+    }
+    .svc-block h2 .light { font-weight: 100; }
+    .svc-block-desc {
+      font-size: 14px; font-weight: 100; color: var(--mid);
+      line-height: 1.85; margin-bottom: 32px; max-width: 420px;
+    }
+    .svc-block-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0;
+      margin-bottom: 36px;
+    }
+    .svc-block-list li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 12px; font-weight: 100; color: var(--mid);
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .svc-block-list li:first-child { border-top: 1px solid var(--border); }
+    .svc-block-list li::before {
+      content: '+'; color: var(--accent);
+      font-family: 'NewBlack', sans-serif; font-weight: 400;
+      font-size: 14px; flex-shrink: 0;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      display: grid; grid-template-columns: 56px 1fr;
+      background: var(--black); border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .foot-side { border-right: 1px solid rgba(255,255,255,0.06); }
+    .foot-main { padding: 48px 64px; }
+    .foot-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 32px; padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .foot-logo svg { height: 22px; width: auto; }
+    .foot-nav { display: flex; gap: 32px; list-style: none; }
+    .foot-nav a {
+      font-size: 10px; font-weight: 400; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3); transition: color 0.22s;
+    }
+    .foot-nav a:hover { color: rgba(255,255,255,0.7); }
+    .foot-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .foot-copy {
+      font-size: 11px; font-weight: 100; color: rgba(255,255,255,0.2); letter-spacing: 0.05em;
+    }
+    .foot-plus-row { display: flex; gap: 20px; }
+    .foot-plus-row span {
+      font-size: 16px; color: var(--accent); font-family: 'NewBlack', sans-serif; font-weight: 400;
+    }
+
+    /* ── ANIMATIONS ─────────────────────────────────────────── */
+    .fu { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fu.vis { opacity: 1; transform: translateY(0); }
+    .fu.d1 { transition-delay: 0.1s; }
+    .fu.d2 { transition-delay: 0.2s; }
+    .fu.d3 { transition-delay: 0.3s; }
+    .fu.d4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .page-hero { grid-template-columns: 56px 1fr; }
+      .page-hero-photos { display: none; }
+      .intro-strip { grid-template-columns: 1fr 1fr; }
+      .intro-strip-side { display: none; }
+      .svc-block { grid-template-columns: 1fr 1fr; }
+      .svc-block-side { display: none; }
+    }
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      footer { grid-template-columns: 1fr; }
+      .foot-side { display: none; }
+      .foot-main { padding: 36px 24px; }
+      .foot-inner { flex-direction: column; gap: 24px; text-align: center; }
+      .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 640px) {
+      .page-hero { grid-template-columns: 1fr; }
+      .page-hero-side { display: none; }
+      .page-hero-content { padding: 100px 24px 40px; }
+      .breadcrumb { grid-template-columns: 1fr; }
+      .breadcrumb-side { display: none; }
+      .breadcrumb-inner { padding: 14px 24px; }
+      .svc-block, .intro-strip { grid-template-columns: 1fr; }
+      .svc-block-photo { height: 280px; }
+      .svc-block-content { padding: 40px 24px; }
+      .intro-strip-text, .intro-strip-aside { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ─────────────────────────────── -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <!-- Logo SVG Carron + Deslarzes -->
+    <svg viewBox="0 0 391.49 69.37" xmlns="http://www.w3.org/2000/svg" style="height:26px;width:auto;">
+      <g>
+        <g>
+          <path d="M181.35,25.46c-1.13,1.78-2.72,3.19-4.76,4.23-2.04,1.04-4.45,1.56-7.24,1.56-3,0-5.65-.65-7.95-1.95-2.3-1.3-4.08-3.13-5.36-5.49-1.27-2.36-1.91-5.07-1.91-8.14s.64-5.83,1.91-8.2c1.27-2.37,3.06-4.21,5.36-5.52,2.3-1.3,4.95-1.95,7.95-1.95,2.82,0,5.25.51,7.31,1.52,2.05,1.01,3.64,2.38,4.76,4.11,1.12,1.73,1.74,3.65,1.86,5.77h-3.68c-.12-1.47-.64-2.8-1.54-4-.9-1.19-2.11-2.14-3.61-2.83-1.5-.69-3.2-1.03-5.1-1.03-2.15,0-4.09.51-5.84,1.54-1.75,1.03-3.13,2.46-4.14,4.3-1.01,1.84-1.52,3.94-1.52,6.3s.51,4.41,1.52,6.25c1.01,1.84,2.39,3.26,4.14,4.27s3.69,1.52,5.84,1.52c1.96,0,3.69-.37,5.19-1.1,1.5-.74,2.68-1.73,3.54-2.99.86-1.26,1.36-2.65,1.52-4.18h3.72c-.18,2.24-.84,4.24-1.98,6.02Z" fill="#0a0a0a"/>
+          <path d="M197.62.46h7.86l11.08,30.34h-4.14l-3.82-10.2h-14.16l-3.77,10.2h-4.14L197.62.46ZM207.5,17.05l-5.52-15.03h-.87l-5.56,15.03h11.95Z" fill="#0a0a0a"/>
+          <path d="M220.69.46h11.9c1.93,0,3.66.41,5.19,1.22,1.53.81,2.73,1.94,3.61,3.38.87,1.44,1.31,3.1,1.31,4.96,0,2.02-.52,3.62-1.56,4.78-1.04,1.16-2.44,1.95-4.18,2.34v.32c1.62,0,2.88.25,3.77.74.89.49,1.36,1.42,1.42,2.8l.28,9.79h-3.72l-.28-9.79c0-.64-.15-1.1-.46-1.38-.31-.28-.9-.41-1.79-.41h-11.72v11.58h-3.77V.46ZM237.26,14.13c1.12-1.03,1.68-2.31,1.68-3.84,0-1.04-.26-2.05-.78-3.01-.52-.97-1.23-1.75-2.14-2.37-.9-.61-1.86-.92-2.87-.92h-8.69v11.67h8.69c1.62,0,2.99-.51,4.11-1.54Z" fill="#0a0a0a"/>
+          <path d="M246.85.46h11.9c1.93,0,3.66.41,5.19,1.22,1.53.81,2.73,1.94,3.61,3.38.87,1.44,1.31,3.1,1.31,4.96,0,2.02-.52,3.62-1.56,4.78-1.04,1.16-2.44,1.95-4.18,2.34v.32c1.62,0,2.88.25,3.77.74.89.49,1.36,1.42,1.42,2.8l.28,9.79h-3.72l-.28-9.79c0-.64-.15-1.1-.46-1.38-.31-.28-.9-.41-1.79-.41h-11.72v11.58h-3.77V.46ZM263.41,14.13c1.12-1.03,1.68-2.31,1.68-3.84,0-1.04-.26-2.05-.78-3.01-.52-.97-1.23-1.75-2.14-2.37-.9-.61-1.86-.92-2.87-.92h-8.69v11.67h8.69c1.62,0,2.99-.51,4.11-1.54Z" fill="#0a0a0a"/>
+          <path d="M296.69,1.98c2.34,1.32,4.14,3.16,5.4,5.52,1.26,2.36,1.88,5.07,1.88,8.14s-.63,5.78-1.88,8.14c-1.26,2.36-3.06,4.2-5.4,5.52-2.34,1.32-5.08,1.98-8.2,1.98s-5.86-.66-8.2-1.98c-2.34-1.32-4.14-3.16-5.4-5.52-1.26-2.36-1.88-5.07-1.88-8.14s.63-5.78,1.88-8.14c1.26-2.36,3.06-4.2,5.4-5.52,2.34-1.32,5.08-1.98,8.2-1.98s5.86.66,8.2,1.98ZM282.3,4.99c-1.76.97-3.13,2.35-4.09,4.16-.97,1.81-1.45,3.97-1.45,6.48s.48,4.67,1.45,6.48c.97,1.81,2.33,3.19,4.09,4.16,1.76.97,3.82,1.45,6.18,1.45,2.24,0,4.24-.48,6.02-1.45,1.78-.97,3.17-2.36,4.18-4.18,1.01-1.82,1.52-3.98,1.52-6.46s-.51-4.63-1.52-6.46c-1.01-1.82-2.41-3.22-4.18-4.18-1.78-.97-3.79-1.45-6.02-1.45-2.36,0-4.42.48-6.18,1.45Z" fill="#0a0a0a"/>
+          <path d="M308.11.46h7.08l14.29,29h.46V.46h3.77v30.34h-7.54l-13.79-28.54h-.51v28.54h-3.77V.46Z" fill="#0a0a0a"/>
+          <path d="M154.14,38.58h10.11c9.9,0,14.85,5.06,14.85,15.17s-4.95,15.17-14.85,15.17h-10.11v-30.34ZM172.71,62.48c1.78-1.93,2.67-4.84,2.67-8.73s-.89-6.8-2.67-8.73c-1.78-1.93-4.21-2.9-7.31-2.9h-7.54v23.26h7.54c3.09,0,5.53-.97,7.31-2.9Z" fill="#0a0a0a"/>
+          <path d="M183.23,38.58h19.58v3.54h-15.81v9.56h14.85v3.54h-14.85v10.16h16v3.54h-19.76v-30.34Z" fill="#0a0a0a"/>
+          <path d="M224.64,43.08c-1.41-.95-3.22-1.42-5.42-1.42s-4.01.44-5.4,1.33c-1.39.89-2.09,2.19-2.09,3.91,0,1.38.49,2.44,1.47,3.17.98.74,2.7,1.32,5.15,1.75l3.58.64c2.82.52,5.07,1.42,6.76,2.71,1.68,1.29,2.53,3.19,2.53,5.7,0,2.82-1.06,4.94-3.17,6.37-2.11,1.42-4.9,2.14-8.37,2.14-2.27,0-4.33-.38-6.18-1.15-1.85-.77-3.36-1.93-4.5-3.49s-1.77-3.49-1.86-5.79h3.77c.31,4.6,3.23,6.89,8.78,6.89,2.39,0,4.28-.41,5.68-1.22,1.39-.81,2.09-2.06,2.09-3.75,0-1.41-.67-2.51-2-3.31-1.33-.8-3-1.38-4.99-1.75l-3.68-.69c-2.64-.46-4.76-1.29-6.39-2.48-1.62-1.19-2.44-3.09-2.44-5.7,0-2.82,1.06-4.99,3.17-6.53,2.11-1.53,4.81-2.3,8.09-2.3s6.03.79,8.16,2.37c2.13,1.58,3.27,3.9,3.42,6.96h-3.81c-.15-1.96-.93-3.42-2.34-4.37Z" fill="#0a0a0a"/>
+          <path d="M235.35,38.58h3.77v26.8h15.4v3.54h-19.17v-30.34Z" fill="#0a0a0a"/>
+          <path d="M268.81,38.58h7.86l11.08,30.34h-4.14l-3.82-10.2h-14.16l-3.77,10.2h-4.14l11.08-30.34ZM278.7,55.17l-5.52-15.03h-.87l-5.56,15.03h11.95Z" fill="#0a0a0a"/>
+          <path d="M291.89,38.58h11.9c1.93,0,3.66.41,5.19,1.22,1.53.81,2.73,1.94,3.61,3.38.87,1.44,1.31,3.1,1.31,4.96,0,2.02-.52,3.62-1.56,4.78-1.04,1.16-2.44,1.95-4.18,2.34v.32c1.62,0,2.88.25,3.77.74.89.49,1.36,1.42,1.42,2.8l.28,9.79h-3.72l-.28-9.79c0-.64-.15-1.1-.46-1.38-.31-.28-.9-.41-1.79-.41h-11.72v11.58h-3.77v-30.34ZM308.46,52.25c1.12-1.03,1.68-2.31,1.68-3.84,0-1.04-.26-2.05-.78-3.01-.52-.97-1.23-1.75-2.14-2.37-.9-.61-1.86-.92-2.87-.92h-8.69v11.67h8.69c1.62,0,2.99-.51,4.11-1.54Z" fill="#0a0a0a"/>
+          <path d="M318.04,42.11v-3.54h21.19v4.78l-17.37,22.02h17.51v3.54h-21.19v-4.78l17.33-22.02h-17.47Z" fill="#0a0a0a"/>
+          <path d="M343.5,38.58h19.58v3.54h-15.81v9.56h14.85v3.54h-14.85v10.16h16v3.54h-19.76v-30.34Z" fill="#0a0a0a"/>
+          <path d="M384.91,43.08c-1.41-.95-3.22-1.42-5.42-1.42s-4.01.44-5.4,1.33c-1.39.89-2.09,2.19-2.09,3.91,0,1.38.49,2.44,1.47,3.17.98.74,2.7,1.32,5.15,1.75l3.58.64c2.82.52,5.07,1.42,6.76,2.71,1.68,1.29,2.53,3.19,2.53,5.7,0,2.82-1.06,4.94-3.17,6.37-2.11,1.42-4.9,2.14-8.37,2.14-2.27,0-4.33-.38-6.18-1.15-1.85-.77-3.36-1.93-4.5-3.49-1.15-1.56-1.77-3.49-1.86-5.79h3.77c.31,4.6,3.23,6.89,8.78,6.89,2.39,0,4.28-.41,5.68-1.22,1.39-.81,2.09-2.06,2.09-3.75,0-1.41-.67-2.51-2-3.31-1.33-.8-3-1.38-4.99-1.75l-3.68-.69c-2.64-.46-4.76-1.29-6.39-2.48s-2.44-3.09-2.44-5.7c0-2.82,1.06-4.99,3.17-6.53,2.11-1.53,4.81-2.3,8.09-2.3s6.03.79,8.16,2.37c2.13,1.58,3.27,3.9,3.42,6.96h-3.81c-.15-1.96-.93-3.42-2.34-4.37Z" fill="#0a0a0a"/>
+          <polygon points="378.43 13.87 378.43 17.4 365.03 17.4 365.03 30.8 361.5 30.8 361.5 17.4 348.1 17.4 348.1 13.87 361.5 13.87 361.5 .46 365.03 .46 365.03 13.87 378.43 13.87" fill="#3a7d44"/>
+        </g>
+        <g>
+          <path d="M134.22,69.37h-69.01V0h69.01v69.37ZM69.13,65.45h61.17V3.92h-61.17v61.53Z" fill="#0a0a0a"/>
+          <path d="M36.53,69.37H0V0h36.53v69.37ZM3.92,65.45h28.68V3.92H3.92v61.53Z" fill="#0a0a0a"/>
+          <path d="M69.13,69.37h-36.53V0h36.53v69.37ZM36.53,65.45h28.68V3.92h-28.68v61.53Z" fill="#0a0a0a"/>
+          <rect x="34.56" y="32.72" width="32.6" height="3.92" fill="#0a0a0a"/>
+          <rect x="97.75" y="21.84" width="3.92" height="25.7" fill="#0a0a0a"/>
+        </g>
+      </g>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="entreprise.html">L'Entreprise</a></li>
+    <li><a href="savoir-faire.html">Savoir-Faire</a></li>
+    <li><a href="realisations.html">Réalisations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="immobilier.html" style="color:var(--black);">Immobilier</a></li>
+    <li><a href="contact.html" class="nav-cta">Devis Gratuit</a></li>
+  </ul>
+</nav>
+
+
+<!-- ── PAGE HERO ──────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-side"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow fu">
+      <div class="line"></div>
+      <span class="lbl">Biens &amp; Terrains</span>
+    </div>
+    <h1 class="fu d1">Investir<br><span class="light">en Valais</span></h1>
+    <p class="page-hero-desc fu d2">
+      Appartements neufs, biens locatifs et terrains à bâtir dans la région de Bruson et Bagnes. Construits avec le même soin artisanal que toutes nos réalisations.
+    </p>
+    <div class="fu d3" style="display:flex;gap:12px;">
+      <a href="#a-vendre" class="btn btn-white">Voir les biens</a>
+      <a href="contact.html" class="btn" style="background:transparent;color:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.15);">Nous contacter</a>
+    </div>
+    <div class="page-hero-stats fu d4">
+      <div class="ph-stat">
+        <div class="ph-stat-num">5</div>
+        <div class="ph-stat-lbl">Appartements</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-num">13'696</div>
+        <div class="ph-stat-lbl">m² parcelle</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-num">1 080</div>
+        <div class="ph-stat-lbl">m d'altitude</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-num">10'</div>
+        <div class="ph-stat-lbl">de Verbier</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-hero-photos">
+    <div><img src="photos/DSC09076.jpg" alt="Bruson, Valais" /></div>
+    <div><img src="photos/DSC09091.jpg" alt="Construction charpente" /></div>
+  </div>
+</section>
+
+
+
+
+<!-- ── INTRO ──────────────────────────────────── -->
+<div class="intro-strip">
+  <div class="intro-strip-side"></div>
+  <div class="intro-strip-text">
+    <div class="sec-eyebrow fu" style="margin-bottom:20px;">
+      <div class="sec-eyebrow-line"></div>
+      <span class="label">Notre offre</span>
+    </div>
+    <h2 class="sec-title fu d1">Biens immobiliers<br><span class="light">& terrains</span></h2>
+  </div>
+  <div class="intro-strip-aside">
+    <p class="fu d2">Construction de 5 appartements et d'un bureau sur parcelle 13'696 à Bruson sur la Commune de Bagnes. Carron + Deslarzes vous accompagne de la conception à la remise des clés.</p>
+  </div>
+</div>
+
+
+<!-- ── BIEN 01 — LES COLCHIQUES ──────────────── -->
+<div class="svc-block" id="a-vendre">
+  <div class="svc-block-side">
+    <span class="svc-block-num">01</span>
+  </div>
+  <div class="svc-block-photo fu">
+    <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/a397e6484e44456ea9baec99dbc61aa8_52-HoD0FQ.png" alt="Les Colchiques — Face Nord-Ouest" style="object-fit:contain;background:#fff;" />
+    <div class="svc-block-photo-badge">À Vendre</div>
+  </div>
+  <div class="svc-block-content">
+    <div class="svc-block-index fu">01 — À Vendre</div>
+    <h2 class="fu d1">Les<br><span class="light">Colchiques</span></h2>
+    <p class="svc-block-desc fu d2">
+      Construction de 5 appartements et d'un bureau sur parcelle 13'696 à Bruson sur la Commune de Bagnes. Appartement No 11 — Étage. Un développement immobilier de standing situé à 1 080 m d'altitude, avec des vues exceptionnelles sur les Alpes valaisannes.
+    </p>
+    <ul class="svc-block-list fu d3">
+      <li>5 appartements neufs + bureau</li>
+      <li>Parcelle de 13'696 m² à Bruson</li>
+      <li>Appartement N° 11 disponible — Étage</li>
+      <li>Construction ossature bois artisanale</li>
+      <li>À 10 min de Verbier et des pistes</li>
+    </ul>
+    <a href="contact.html" class="btn btn-dark fu d4" style="align-self:flex-start;">Demander le descriptif →</a>
+  </div>
+</div>
+
+
+<!-- ── BIEN 02 — PLAN ────────────────────────── -->
+<div class="svc-block" id="plan">
+  <div class="svc-block-side">
+    <span class="svc-block-num">02</span>
+  </div>
+  <div class="svc-block-photo fu">
+    <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/aea7a8a050274080929840acedbf3e98_V2.png" alt="Plan rez-de-chaussée Les Colchiques" style="object-fit:contain;background:#fff;" />
+    <div class="svc-block-photo-badge">Plans</div>
+  </div>
+  <div class="svc-block-content">
+    <div class="svc-block-index fu">02 — Plans</div>
+    <h2 class="fu d1">Plan<br><span class="light">rez-de-chaussée</span></h2>
+    <p class="svc-block-desc fu d2">
+      Charpente et structure réalisées par nos équipes selon nos standards artisanaux habituels. Finitions soignées, matériaux sélectionnés avec soin pour la durabilité en milieu alpin. Chaque appartement bénéficie d'agencements optimisés et de finitions haut de gamme.
+    </p>
+    <ul class="svc-block-list fu d3">
+      <li>Vue panoramique sur les Alpes</li>
+      <li>Finitions artisanales haut de gamme</li>
+      <li>Parkings et cave inclus</li>
+      <li>Descriptif complet sur demande</li>
+      <li>Visite sur rendez-vous</li>
+    </ul>
+    <a href="contact.html" class="btn btn-dark fu d4" style="align-self:flex-start;">Organiser une visite →</a>
+  </div>
+</div>
+
+
+<!-- ── BIEN 03 — À LOUER ─────────────────────── -->
+<div class="svc-block" id="a-louer">
+  <div class="svc-block-side">
+    <span class="svc-block-num">03</span>
+  </div>
+  <div class="svc-block-photo fu">
+    <img src="photos/DSC09076.jpg" alt="Biens à louer — Bruson" />
+    <div class="svc-block-photo-badge">À Louer</div>
+  </div>
+  <div class="svc-block-content">
+    <div class="svc-block-index fu">03 — À Louer</div>
+    <h2 class="fu d1">Biens<br><span class="light">locatifs</span></h2>
+    <p class="svc-block-desc fu d2">
+      De nouveaux biens locatifs seront prochainement disponibles dans la région de Bruson et Bagnes. Enregistrez votre intérêt pour être informé en priorité des nouvelles opportunités.
+    </p>
+    <ul class="svc-block-list fu d3">
+      <li>Région Bruson et Bagnes</li>
+      <li>Bientôt disponible</li>
+      <li>En construction</li>
+    </ul>
+    <a href="contact.html" class="btn btn-dark fu d4" style="align-self:flex-start;">Me tenir informé →</a>
+  </div>
+</div>
+
+
+<!-- ── BIEN 04 — TERRAINS ────────────────────── -->
+<div class="svc-block" id="terrains">
+  <div class="svc-block-side">
+    <span class="svc-block-num">04</span>
+  </div>
+  <div class="svc-block-photo fu">
+    <img src="photos/DSC09091.jpg" alt="Terrain à bâtir — Bruson, Valais" />
+    <div class="svc-block-photo-badge">Terrains</div>
+  </div>
+  <div class="svc-block-content">
+    <div class="svc-block-index fu">04 — Terrains</div>
+    <h2 class="fu d1">Construire<br><span class="light">sur mesure</span></h2>
+    <p class="svc-block-desc fu d2">
+      Nous disposons de parcelles dans la région de Bruson et Bagnes. Constructeur et propriétaire à la fois, nous vous offrons un avantage unique : concevoir et bâtir votre chalet ou maison à ossature bois directement avec l'entreprise qui connaît le terrain.
+    </p>
+    <ul class="svc-block-list fu d3">
+      <li>Parcelles constructibles à Bruson</li>
+      <li>Zone résidentielle — 1 080 m d'altitude</li>
+      <li>Vue panoramique sur les Alpes</li>
+      <li>Accompagnement complet conception → livraison</li>
+      <li>Chalet, maison ossature bois, contemporain</li>
+    </ul>
+    <a href="contact.html" class="btn btn-dark fu d4" style="align-self:flex-start;">Renseignements →</a>
+  </div>
+</div>
+
+
+<!-- ── CTA ────────────────────────────────────── -->
+<div style="display:grid;grid-template-columns:56px 1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="border-right:1px solid var(--border);"></div>
+  <div style="padding:64px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;">
+    <div>
+      <h3 class="fu" style="font-size:26px;font-weight:400;letter-spacing:-0.02em;color:var(--black);margin-bottom:10px;">Une question sur un bien ?</h3>
+      <p class="fu d1" style="font-size:14px;font-weight:100;color:var(--muted);max-width:420px;line-height:1.7;">Notre équipe est disponible pour vous fournir des renseignements détaillés, organiser des visites ou vous accompagner dans votre projet d'acquisition.</p>
+    </div>
+    <div class="fu d2" style="display:flex;gap:12px;flex-shrink:0;">
+      <a href="contact.html" class="btn btn-dark">Nous contacter</a>
+      <a href="tel:+41277760000" class="btn btn-outline">Appeler directement</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── FOOTER ─────────────────────────────────── -->
+<footer>
+  <div class="foot-side"></div>
+  <div class="foot-main">
+    <div class="foot-inner">
+      <div class="foot-logo">
+        <!-- Logo footer version blanche -->
+        <svg viewBox="0 0 391.49 69.37" xmlns="http://www.w3.org/2000/svg" style="height:22px;width:auto;">
+          <g>
+            <g>
+              <path d="M181.35,25.46c-1.13,1.78-2.72,3.19-4.76,4.23-2.04,1.04-4.45,1.56-7.24,1.56-3,0-5.65-.65-7.95-1.95-2.3-1.3-4.08-3.13-5.36-5.49-1.27-2.36-1.91-5.07-1.91-8.14s.64-5.83,1.91-8.2c1.27-2.37,3.06-4.21,5.36-5.52,2.3-1.3,4.95-1.95,7.95-1.95,2.82,0,5.25.51,7.31,1.52,2.05,1.01,3.64,2.38,4.76,4.11,1.12,1.73,1.74,3.65,1.86,5.77h-3.68c-.12-1.47-.64-2.8-1.54-4-.9-1.19-2.11-2.14-3.61-2.83-1.5-.69-3.2-1.03-5.1-1.03-2.15,0-4.09.51-5.84,1.54-1.75,1.03-3.13,2.46-4.14,4.3-1.01,1.84-1.52,3.94-1.52,6.3s.51,4.41,1.52,6.25c1.01,1.84,2.39,3.26,4.14,4.27s3.69,1.52,5.84,1.52c1.96,0,3.69-.37,5.19-1.1,1.5-.74,2.68-1.73,3.54-2.99.86-1.26,1.36-2.65,1.52-4.18h3.72c-.18,2.24-.84,4.24-1.98,6.02Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M197.62.46h7.86l11.08,30.34h-4.14l-3.82-10.2h-14.16l-3.77,10.2h-4.14L197.62.46ZM207.5,17.05l-5.52-15.03h-.87l-5.56,15.03h11.95Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M220.69.46h11.9c1.93,0,3.66.41,5.19,1.22,1.53.81,2.73,1.94,3.61,3.38.87,1.44,1.31,3.1,1.31,4.96,0,2.02-.52,3.62-1.56,4.78-1.04,1.16-2.44,1.95-4.18,2.34v.32c1.62,0,2.88.25,3.77.74.89.49,1.36,1.42,1.42,2.8l.28,9.79h-3.72l-.28-9.79c0-.64-.15-1.1-.46-1.38-.31-.28-.9-.41-1.79-.41h-11.72v11.58h-3.77V.46ZM237.26,14.13c1.12-1.03,1.68-2.31,1.68-3.84,0-1.04-.26-2.05-.78-3.01-.52-.97-1.23-1.75-2.14-2.37-.9-.61-1.86-.92-2.87-.92h-8.69v11.67h8.69c1.62,0,2.99-.51,4.11-1.54Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M246.85.46h11.9c1.93,0,3.66.41,5.19,1.22,1.53.81,2.73,1.94,3.61,3.38.87,1.44,1.31,3.1,1.31,4.96,0,2.02-.52,3.62-1.56,4.78-1.04,1.16-2.44,1.95-4.18,2.34v.32c1.62,0,2.88.25,3.77.74.89.49,1.36,1.42,1.42,2.8l.28,9.79h-3.72l-.28-9.79c0-.64-.15-1.1-.46-1.38-.31-.28-.9-.41-1.79-.41h-11.72v11.58h-3.77V.46ZM263.41,14.13c1.12-1.03,1.68-2.31,1.68-3.84,0-1.04-.26-2.05-.78-3.01-.52-.97-1.23-1.75-2.14-2.37-.9-.61-1.86-.92-2.87-.92h-8.69v11.67h8.69c1.62,0,2.99-.51,4.11-1.54Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M296.69,1.98c2.34,1.32,4.14,3.16,5.4,5.52,1.26,2.36,1.88,5.07,1.88,8.14s-.63,5.78-1.88,8.14c-1.26,2.36-3.06,4.2-5.4,5.52-2.34,1.32-5.08,1.98-8.2,1.98s-5.86-.66-8.2-1.98c-2.34-1.32-4.14-3.16-5.4-5.52-1.26-2.36-1.88-5.07-1.88-8.14s.63-5.78,1.88-8.14c1.26-2.36,3.06-4.2,5.4-5.52,2.34-1.32,5.08-1.98,8.2-1.98s5.86.66,8.2,1.98ZM282.3,4.99c-1.76.97-3.13,2.35-4.09,4.16-.97,1.81-1.45,3.97-1.45,6.48s.48,4.67,1.45,6.48c.97,1.81,2.33,3.19,4.09,4.16,1.76.97,3.82,1.45,6.18,1.45,2.24,0,4.24-.48,6.02-1.45,1.78-.97,3.17-2.36,4.18-4.18,1.01-1.82,1.52-3.98,1.52-6.46s-.51-4.63-1.52-6.46c-1.01-1.82-2.41-3.22-4.18-4.18-1.78-.97-3.79-1.45-6.02-1.45-2.36,0-4.42.48-6.18,1.45Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M308.11.46h7.08l14.29,29h.46V.46h3.77v30.34h-7.54l-13.79-28.54h-.51v28.54h-3.77V.46Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M154.14,38.58h10.11c9.9,0,14.85,5.06,14.85,15.17s-4.95,15.17-14.85,15.17h-10.11v-30.34ZM172.71,62.48c1.78-1.93,2.67-4.84,2.67-8.73s-.89-6.8-2.67-8.73c-1.78-1.93-4.21-2.9-7.31-2.9h-7.54v23.26h7.54c3.09,0,5.53-.97,7.31-2.9Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M183.23,38.58h19.58v3.54h-15.81v9.56h14.85v3.54h-14.85v10.16h16v3.54h-19.76v-30.34Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M224.64,43.08c-1.41-.95-3.22-1.42-5.42-1.42s-4.01.44-5.4,1.33c-1.39.89-2.09,2.19-2.09,3.91,0,1.38.49,2.44,1.47,3.17.98.74,2.7,1.32,5.15,1.75l3.58.64c2.82.52,5.07,1.42,6.76,2.71,1.68,1.29,2.53,3.19,2.53,5.7,0,2.82-1.06,4.94-3.17,6.37-2.11,1.42-4.9,2.14-8.37,2.14-2.27,0-4.33-.38-6.18-1.15-1.85-.77-3.36-1.93-4.5-3.49s-1.77-3.49-1.86-5.79h3.77c.31,4.6,3.23,6.89,8.78,6.89,2.39,0,4.28-.41,5.68-1.22,1.39-.81,2.09-2.06,2.09-3.75,0-1.41-.67-2.51-2-3.31-1.33-.8-3-1.38-4.99-1.75l-3.68-.69c-2.64-.46-4.76-1.29-6.39-2.48-1.62-1.19-2.44-3.09-2.44-5.7,0-2.82,1.06-4.99,3.17-6.53,2.11-1.53,4.81-2.3,8.09-2.3s6.03.79,8.16,2.37c2.13,1.58,3.27,3.9,3.42,6.96h-3.81c-.15-1.96-.93-3.42-2.34-4.37Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M235.35,38.58h3.77v26.8h15.4v3.54h-19.17v-30.34Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M268.81,38.58h7.86l11.08,30.34h-4.14l-3.82-10.2h-14.16l-3.77,10.2h-4.14l11.08-30.34ZM278.7,55.17l-5.52-15.03h-.87l-5.56,15.03h11.95Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M291.89,38.58h11.9c1.93,0,3.66.41,5.19,1.22,1.53.81,2.73,1.94,3.61,3.38.87,1.44,1.31,3.1,1.31,4.96,0,2.02-.52,3.62-1.56,4.78-1.04,1.16-2.44,1.95-4.18,2.34v.32c1.62,0,2.88.25,3.77.74.89.49,1.36,1.42,1.42,2.8l.28,9.79h-3.72l-.28-9.79c0-.64-.15-1.1-.46-1.38-.31-.28-.9-.41-1.79-.41h-11.72v11.58h-3.77v-30.34ZM308.46,52.25c1.12-1.03,1.68-2.31,1.68-3.84,0-1.04-.26-2.05-.78-3.01-.52-.97-1.23-1.75-2.14-2.37-.9-.61-1.86-.92-2.87-.92h-8.69v11.67h8.69c1.62,0,2.99-.51,4.11-1.54Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M318.04,42.11v-3.54h21.19v4.78l-17.37,22.02h17.51v3.54h-21.19v-4.78l17.33-22.02h-17.47Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M343.5,38.58h19.58v3.54h-15.81v9.56h14.85v3.54h-14.85v10.16h16v3.54h-19.76v-30.34Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M384.91,43.08c-1.41-.95-3.22-1.42-5.42-1.42s-4.01.44-5.4,1.33c-1.39.89-2.09,2.19-2.09,3.91,0,1.38.49,2.44,1.47,3.17.98.74,2.7,1.32,5.15,1.75l3.58.64c2.82.52,5.07,1.42,6.76,2.71,1.68,1.29,2.53,3.19,2.53,5.7,0,2.82-1.06,4.94-3.17,6.37-2.11,1.42-4.9,2.14-8.37,2.14-2.27,0-4.33-.38-6.18-1.15-1.85-.77-3.36-1.93-4.5-3.49-1.15-1.56-1.77-3.49-1.86-5.79h3.77c.31,4.6,3.23,6.89,8.78,6.89,2.39,0,4.28-.41,5.68-1.22,1.39-.81,2.09-2.06,2.09-3.75,0-1.41-.67-2.51-2-3.31-1.33-.8-3-1.38-4.99-1.75l-3.68-.69c-2.64-.46-4.76-1.29-6.39-2.48s-2.44-3.09-2.44-5.7c0-2.82,1.06-4.99,3.17-6.53,2.11-1.53,4.81-2.3,8.09-2.3s6.03.79,8.16,2.37c2.13,1.58,3.27,3.9,3.42,6.96h-3.81c-.15-1.96-.93-3.42-2.34-4.37Z" fill="rgba(255,255,255,0.5)"/>
+              <polygon points="378.43 13.87 378.43 17.4 365.03 17.4 365.03 30.8 361.5 30.8 361.5 17.4 348.1 17.4 348.1 13.87 361.5 13.87 361.5 .46 365.03 .46 365.03 13.87 378.43 13.87" fill="#3a7d44"/>
+            </g>
+            <g>
+              <path d="M134.22,69.37h-69.01V0h69.01v69.37ZM69.13,65.45h61.17V3.92h-61.17v61.53Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M36.53,69.37H0V0h36.53v69.37ZM3.92,65.45h28.68V3.92H3.92v61.53Z" fill="rgba(255,255,255,0.5)"/>
+              <path d="M69.13,69.37h-36.53V0h36.53v69.37ZM36.53,65.45h28.68V3.92h-28.68v61.53Z" fill="rgba(255,255,255,0.5)"/>
+              <rect x="34.56" y="32.72" width="32.6" height="3.92" fill="rgba(255,255,255,0.5)"/>
+              <rect x="97.75" y="21.84" width="3.92" height="25.7" fill="rgba(255,255,255,0.5)"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <ul class="foot-nav">
+        <li><a href="entreprise.html">L'Entreprise</a></li>
+        <li><a href="savoir-faire.html">Prestations</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Mentions légales</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <p class="foot-copy">© 2025–2026 Carron + Deslarzes SA · Le Châble, Valais · Charpente artisanale depuis 2008</p>
+      <div class="foot-plus-row">
+        <span>+</span>
+        <span>+</span>
+        <span>+</span>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;gap:10px;">
+      <span style="font-size:10px;font-weight:100;letter-spacing:0.1em;color:rgba(255,255,255,0.2);">Conception Design et Web :</span>
+      <a href="https://ruosscommunication.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.3);transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
+        <svg viewBox="0 0 287.74 243.27" xmlns="http://www.w3.org/2000/svg" style="height:16px;width:auto;" fill="currentColor"><path d="M284.5,10.1c-3.44-5.54-9.12-9.17-15.59-9.97-.69-.08-1.39-.13-2.08-.13-.02,0-9.19.04-9.19.04-.38-.02-.77-.03-1.15-.03-9.55,0-17.8,6.14-20.54,15.29-.05.16-.09.32-.14.47l-7.7,28.72c-3.28-5.44-7.52-10.42-12.64-14.82,4.16-3.9,6.14-9.7,5.11-15.43-1.18-6.59-6.13-11.88-12.62-13.5-1.98-.49-4.04-.74-6.13-.74-8.2,0-16.95,3.79-26.6,11.55-6.82-1.22-14.13-1.92-21.82-2.11-1.41-.03-2.81-.05-4.2-.05-27.24,0-48.32,6.97-60.98,20.15-9.17,9.55-13.71,22.09-13.13,36.25.83,20.18,16.25,35.68,36.5,37.37-15.61,25.32-32.6,47.58-38.04,53.94-3.19,3.77-5.91,6.33-8.04,8.01-2.6-10.67-12.83-18.41-25.4-18.41-4.05,0-8.04.79-11.85,2.34C10.57,156.26,0,174.01,0,196.52c0,27.52,20.92,46.75,50.88,46.75,23.11,0,45.58-16.61,68.68-50.76,7.28-10.77,14-22.36,19.95-33.47.3,1.79.68,3.59,1.14,5.41,5.37,21.03,20.07,33.59,39.34,33.59,11,0,26.88-3.97,40.19-22.86.11-.14.21-.29.31-.44,6.86-9.87,10.83-20.79,13.01-28.55,10.33-2.16,19.09-9.99,22.34-20.56,2.05-6.8,1.48-13.87-1.51-19.81,2.53-2.28,4.53-5.19,5.76-8.53l26.26-68.3c.07-.17.13-.34.19-.51,2.14-6.15,1.4-12.85-2.04-18.38ZM151.55,103.17c0-6.13,5.12-11.17,11.54-11.12,7.08.06,10.46,3.92,10.46,10.21-1.12.36-1.8.54-3.78.78-1.85.24-2.49.18-3.59.21,0-2.83-1.46-4.09-3.77-4.09-1.9,0-3.7,2.17-2.63,4.23,1.6,3.1,8.66,2.23,9.93,2.08,2.85-.35,5.39-1.04,7.43-2.04.07-.03.13-.07.2-.1.16-.07.31-.15.46-.23.07-.03.16-.07.24-.11,11.39-5.36,18.07-20.73,18.07-32.95,0-10.09-3.83-18.34-10.18-24.4-1.85-1.77-4.14-3.33-6.5-4.26-10.81,15.01-29.42,57.56-34.16,67.56-15.3,32.27-53.53,117.32-94.39,117.32-20.14,0-33.86-11.5-33.86-29.75,0-16.14,6.93-27.34,17.68-31.72,7.03-2.87,14.46.26,14.46,5.68,0,7.69,3.33,14.53,11.87,14.53,7.34,0,16.28-6.01,25.51-16.9,6.88-8.05,24.58-31.67,39.96-56.69,13.03-21.2,28.48-51.7,45.08-73.02-5.94-2.4-17.26-2.75-30.33-.86-12.13,1.74-29.32,8.19-29.24,21.53.03,5.11,3.92,9.9,11.53,10,11.2.15,16.98-4.87,21.17-14.14,1.21-2.67,2.62-1.04,2.62.13,0,11.63-9.93,31.26-32.03,31.26-11.13,0-22.63-7.25-23.2-21.22-1.14-27.94,25.29-39.54,60.89-38.65,9.71.24,18.96,1.42,27.01,3.55,8.1-7.73,17.5-14.33,23.85-12.74-10.08,6.89-13.63,11.01-16.75,15.1,2.17.86,4.26,1.81,6.24,2.84,15.99,8.27,25.74,21.71,25.74,38.15,0,19.98-15.81,33.46-33.93,38.08-2.24.47-4.34.86-6.29,1.18-.18.02-.36.05-.54.08-5.31.7-9.67.81-13.05.65h-.03c-10.15-.65-13.69-3.98-13.69-10.16ZM217.35,140.79c-2.24,8.24-5.83,17.09-10.91,24.38,0,0,0,.01-.01.01-6.39,9.14-15.11,15.85-26.43,15.85-13.28,0-20.12-10.01-22.86-20.79-3.68-14.41-.73-27.97,6.33-44.8,1.73.21,3.5.32,5.35.32,3.15,0,3.69,0,5.97-.33-.23,12.09-2.13,28.87,9.31,34.83,10.86,5.67,23.65-3.83,30.32-11.08.05-.06.13-.13.21-.19h0s.01-.01.01-.01c1.24-.99,3.15.16,2.7,1.81ZM239.56,120.72c-1.74,5.65-7.38,9.7-13.16,8.99-5.78-.7-8.55-5.72-6.81-11.45,1.77-5.81,7.48-9.77,13.1-9.09,5.63.69,8.62,5.73,6.87,11.55ZM270.48,22.88l-26.33,68.47c-.68,1.99-2.65,3.22-4.74,2.96l-1.75-.22c-2.74-.33-4.51-3.06-3.72-5.69l18.31-68.22c.62-2.07,2.64-3.4,4.79-3.13l9.79-.04c2.81.35,4.59,3.2,3.65,5.87Z"/></svg>
+        <span style="font-size:10px;font-weight:400;letter-spacing:0.1em;color:rgba(255,255,255,0.3);">Ruoss! Communication</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ── JS ────────────────────────────────────── -->
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
