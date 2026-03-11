@@ -26,7 +26,7 @@
 
     /* ── RESET & VARIABLES ─────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
     :root {
       --black:   #0a0a0a;
       --dark:    #141414;
@@ -275,6 +275,67 @@
     .fu.d3 { transition-delay: 0.3s; }
     .fu.d4 { transition-delay: 0.4s; }
 
+    /* ── HAMBURGER MENU ─────────────────────────────────────── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 1002;
+    }
+    .nav-burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--black);
+      transition: all 0.3s ease;
+    }
+    .nav-burger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .nav-burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-burger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white);
+      z-index: 1001;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-menu.open {
+      display: flex;
+      opacity: 1;
+    }
+    .mobile-menu a {
+      font-family: 'NewBlack', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--black); }
+    .mobile-menu .nav-cta {
+      margin-top: 12px;
+    }
+
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1100px) {
       .page-hero { grid-template-columns: 56px 1fr; }
@@ -287,16 +348,24 @@
     @media (max-width: 960px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
+      .nav-burger { display: flex; }
       footer { grid-template-columns: 1fr; }
       .foot-side { display: none; }
       .foot-main { padding: 36px 24px; }
       .foot-inner { flex-direction: column; gap: 24px; text-align: center; }
       .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .foot-nav { flex-wrap: wrap; justify-content: center; }
+      .cta-section { grid-template-columns: 1fr !important; }
+      .cta-side { display: none !important; }
+      .cta-main { padding: 40px 24px !important; }
     }
     @media (max-width: 640px) {
-      .page-hero { grid-template-columns: 1fr; }
+      .page-hero { grid-template-columns: 1fr !important; }
       .page-hero-side { display: none; }
-      .page-hero-content { padding: 100px 24px 40px; }
+      .page-hero-content { padding: 100px 24px 40px; min-width: 0; }
+      .page-hero-desc { max-width: 100%; }
+      .page-hero-photos { height: 250px; }
+      .page-hero-stats { flex-wrap: wrap; gap: 0; }
       .breadcrumb { grid-template-columns: 1fr; }
       .breadcrumb-side { display: none; }
       .breadcrumb-inner { padding: 14px 24px; }
@@ -304,6 +373,27 @@
       .svc-block-photo { height: 280px; }
       .svc-block-content { padding: 40px 24px; }
       .intro-strip-text, .intro-strip-aside { padding: 40px 24px; }
+      .foot-main { padding: 28px 20px; }
+      .foot-nav { flex-direction: column; gap: 16px; }
+      .listing-main { padding: 36px 20px; }
+      .listing-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .property-header { padding: 24px 20px; }
+      .property-name { font-size: 24px; }
+      .property-photos { grid-template-columns: 1fr; height: auto; }
+      .property-photos .pp { height: 200px; }
+      .property-specs { grid-template-columns: 1fr 1fr; }
+      .spec-item { padding: 16px 20px; }
+      .property-desc { padding: 20px; }
+      .property-cta { padding: 20px; }
+      .terrains-main { padding: 36px 20px; }
+      .terrain-info { padding: 20px; }
+      .terrain-specs { flex-wrap: wrap; gap: 16px; }
+      .ts { padding-right: 16px; }
+      .immo-cta-main { padding: 36px 20px; }
+      .immo-cta-text h3 { font-size: 22px; }
+      .sec-title { margin-bottom: 16px; }
+      .btn { padding: 12px 20px; font-size: 10px; }
+      .cta-main { padding: 32px 20px !important; flex-direction: column !important; }
     }
   </style>
 </head>
@@ -347,11 +437,23 @@
     <li><a href="entreprise.html">L'Entreprise</a></li>
     <li><a href="savoir-faire.html">Savoir-Faire</a></li>
     <li><a href="realisations.html">Réalisations</a></li>
-    <li><a href="contact.html">Contact</a></li>
     <li><a href="immobilier.html" style="color:var(--black);">Immobilier</a></li>
+    <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">Devis Gratuit</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="entreprise.html">L'Entreprise</a>
+  <a href="savoir-faire.html">Savoir-Faire</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="immobilier.html">Immobilier</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-dark nav-cta">Devis Gratuit</a>
+</div>
 
 
 <!-- ── PAGE HERO ──────────────────────────────── -->
@@ -521,9 +623,9 @@
 
 
 <!-- ── CTA ────────────────────────────────────── -->
-<div style="display:grid;grid-template-columns:56px 1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div style="border-right:1px solid var(--border);"></div>
-  <div style="padding:64px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;">
+<div class="cta-section" style="display:grid;grid-template-columns:56px 1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="cta-side" style="border-right:1px solid var(--border);"></div>
+  <div class="cta-main" style="padding:64px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;">
     <div>
       <h3 class="fu" style="font-size:26px;font-weight:400;letter-spacing:-0.02em;color:var(--black);margin-bottom:10px;">Une question sur un bien ?</h3>
       <p class="fu d1" style="font-size:14px;font-weight:100;color:var(--muted);max-width:420px;line-height:1.7;">Notre équipe est disponible pour vous fournir des renseignements détaillés, organiser des visites ou vous accompagner dans votre projet d'acquisition.</p>
@@ -618,6 +720,24 @@
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+
+  // Hamburger menu
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
 </script>
 </body>
 </html>

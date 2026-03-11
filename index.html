@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carron + Deslarzes — Charpente & Couverture, Valais</title>
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
@@ -45,11 +45,23 @@
     <li><a href="entreprise.html">L'Entreprise</a></li>
     <li><a href="savoir-faire.html">Savoir-Faire</a></li>
     <li><a href="realisations.html">Réalisations</a></li>
-    <li><a href="contact.html">Contact</a></li>
     <li><a href="immobilier.html">Immobilier</a></li>
+    <li><a href="contact.html">Contact</a></li>
     <li><a href="contact.html" class="nav-cta">Devis Gratuit</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="entreprise.html">L'Entreprise</a>
+  <a href="savoir-faire.html">Savoir-Faire</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="immobilier.html">Immobilier</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-dark nav-cta">Devis Gratuit</a>
+</div>
 
 <!-- ── HERO ───────────────────────────────── -->
 <section class="hero" id="home">
@@ -117,19 +129,19 @@
 </div>
 
 <!-- ── HOME CARDS GRID ────────────────────── -->
-<section style="display: grid; grid-template-columns: 56px 1fr;">
-  <div style="border-right: 1px solid var(--border); background: var(--pale);"></div>
-  <div style="padding: 80px 64px;">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+<section class="home-cards-wrap">
+  <div class="home-cards-side"></div>
+  <div class="home-cards-main">
+    <div class="home-cards-grid">
 
       <!-- Card 1: L'Entreprise -->
-      <a href="entreprise.html" style="display: grid; grid-template-rows: 280px auto auto; border: 1px solid var(--border); background: var(--white); text-decoration: none; color: inherit; transition: all 0.3s;">
-        <div style="overflow: hidden;">
-          <img src="photos/DSC09042.jpg" alt="L'Entreprise" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, filter 0.55s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+      <a href="entreprise.html" class="home-card">
+        <div class="home-card-img">
+          <img src="photos/DSC09042.jpg" alt="L'Entreprise" />
         </div>
-        <div style="padding: 32px 28px;">
-          <h3 style="font-size: 24px; font-weight: 400; letter-spacing: -0.02em; color: var(--black); margin-bottom: 12px;">L'Entreprise</h3>
-          <p style="font-size: 13px; font-weight: 100; line-height: 1.6; color: var(--muted);">Découvrez notre histoire, notre équipe et notre savoir-faire transmis depuis 2008.</p>
+        <div class="home-card-body">
+          <h3>L'Entreprise</h3>
+          <p>Découvrez notre histoire, notre équipe et notre savoir-faire transmis depuis 2008.</p>
         </div>
         <div class="card-link">
           <span>Découvrir →</span>
@@ -137,16 +149,16 @@
       </a>
 
       <!-- Card 2: Savoir-Faire -->
-      <a href="savoir-faire.html" style="display: grid; grid-template-rows: 280px auto auto; border: 1px solid var(--border); background: var(--white); text-decoration: none; color: inherit; transition: all 0.3s;">
-        <div style="overflow: hidden; background: var(--black); display: flex; align-items: center; justify-content: center;">
-          <div style="text-align: center; color: var(--white);">
-            <div style="font-size: 48px; font-weight: 400; margin-bottom: 12px;">6</div>
-            <div style="font-size: 12px; font-weight: 100; letter-spacing: 0.1em;">PRESTATIONS</div>
+      <a href="savoir-faire.html" class="home-card">
+        <div class="home-card-img-placeholder">
+          <div style="text-align: center;">
+            <div class="num">6</div>
+            <div class="txt">PRESTATIONS</div>
           </div>
         </div>
-        <div style="padding: 32px 28px;">
-          <h3 style="font-size: 24px; font-weight: 400; letter-spacing: -0.02em; color: var(--black); margin-bottom: 12px;">Savoir-Faire</h3>
-          <p style="font-size: 13px; font-weight: 100; line-height: 1.6; color: var(--muted);">Charpente, couverture, maisons, chalets et immobilier.</p>
+        <div class="home-card-body">
+          <h3>Savoir-Faire</h3>
+          <p>Charpente, couverture, maisons, chalets et immobilier.</p>
         </div>
         <div class="card-link">
           <span>Explorer →</span>
@@ -154,13 +166,13 @@
       </a>
 
       <!-- Card 3: Réalisations -->
-      <a href="realisations.html" style="display: grid; grid-template-rows: 280px auto auto; border: 1px solid var(--border); background: var(--white); text-decoration: none; color: inherit; transition: all 0.3s;">
-        <div style="overflow: hidden;">
-          <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/CLA3347-1-scaled.jpg" alt="Réalisations" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, filter 0.55s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+      <a href="realisations.html" class="home-card">
+        <div class="home-card-img">
+          <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/CLA3347-1-scaled.jpg" alt="Réalisations" />
         </div>
-        <div style="padding: 32px 28px;">
-          <h3 style="font-size: 24px; font-weight: 400; letter-spacing: -0.02em; color: var(--black); margin-bottom: 12px;">Réalisations</h3>
-          <p style="font-size: 13px; font-weight: 100; line-height: 1.6; color: var(--muted);">Nos projets complétés en Valais depuis plus de 15 ans.</p>
+        <div class="home-card-body">
+          <h3>Réalisations</h3>
+          <p>Nos projets complétés en Valais depuis plus de 15 ans.</p>
         </div>
         <div class="card-link">
           <span>Voir la galerie →</span>
@@ -168,13 +180,13 @@
       </a>
 
       <!-- Card 4: Immobilier -->
-      <a href="immobilier.html" style="display: grid; grid-template-rows: 280px auto auto; border: 1px solid var(--border); background: var(--white); text-decoration: none; color: inherit; transition: all 0.3s;">
-        <div style="overflow: hidden;">
-          <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/Grenier-005-1-scaled.jpg" alt="Immobilier" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, filter 0.55s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
+      <a href="immobilier.html" class="home-card">
+        <div class="home-card-img">
+          <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/Grenier-005-1-scaled.jpg" alt="Immobilier" />
         </div>
-        <div style="padding: 32px 28px;">
-          <h3 style="font-size: 24px; font-weight: 400; letter-spacing: -0.02em; color: var(--black); margin-bottom: 12px;">Immobilier</h3>
-          <p style="font-size: 13px; font-weight: 100; line-height: 1.6; color: var(--muted);">Biens et terrains à Bruson, Bagnes et région.</p>
+        <div class="home-card-body">
+          <h3>Immobilier</h3>
+          <p>Biens et terrains à Bruson, Bagnes et région.</p>
         </div>
         <div class="card-link">
           <span>Consulter →</span>
@@ -183,12 +195,12 @@
     </div>
 
     <!-- Contact CTA -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 60px 44px; border: 1px solid var(--border); background: var(--pale);">
+    <div class="home-cta-bar">
       <div>
-        <h3 style="font-size: 28px; font-weight: 400; letter-spacing: -0.02em; color: var(--black); margin-bottom: 10px;">Parlons de votre projet</h3>
-        <p style="font-size: 14px; font-weight: 100; color: var(--muted); line-height: 1.7;">Contactez-nous pour discuter de vos besoins en charpente, couverture ou immobilier.</p>
+        <h3>Parlons de votre projet</h3>
+        <p>Contactez-nous pour discuter de vos besoins en charpente, couverture ou immobilier.</p>
       </div>
-      <div style="display: flex; align-items: center; justify-content: flex-end; gap: 12px;">
+      <div class="home-cta-buttons">
         <a href="contact.html" class="btn btn-dark">Nous contacter →</a>
       </div>
     </div>
@@ -318,6 +330,24 @@
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
     });
   });
+
+  // Hamburger menu
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
 </script>
 
 </body>

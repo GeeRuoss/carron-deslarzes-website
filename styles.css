@@ -18,7 +18,7 @@
 
 /* ── RESET ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
 /* ── VARIABLES ──────────────────────────────────────────── */
 :root {
@@ -977,10 +977,172 @@ footer {
 .immo-cta-text p { font-size: 14px; font-weight: 100; color: var(--muted); max-width: 400px; line-height: 1.7; }
 .immo-cta-buttons { display: flex; gap: 12px; flex-shrink: 0; }
 
+/* ── HAMBURGER MENU ─────────────────────────────────────── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1002;
+}
+.nav-burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--black);
+  transition: all 0.3s ease;
+}
+.nav-burger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--white);
+  z-index: 1001;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.mobile-menu.open {
+  display: flex;
+  opacity: 1;
+}
+.mobile-menu a {
+  font-family: 'NewBlack', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--black); }
+.mobile-menu .nav-cta {
+  margin-top: 12px;
+}
+
+/* ── HOME CARDS GRID ───────────────────────────────────── */
+.home-cards-wrap {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+}
+.home-cards-side {
+  border-right: 1px solid var(--border);
+  background: var(--pale);
+}
+.home-cards-main {
+  padding: 80px 64px;
+}
+.home-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.home-card {
+  display: grid;
+  grid-template-rows: 280px auto auto;
+  border: 1px solid var(--border);
+  background: var(--white);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s;
+}
+.home-card-img {
+  overflow: hidden;
+}
+.home-card-img img {
+  transition: transform 0.5s, filter 0.55s;
+}
+.home-card:hover .home-card-img img {
+  transform: scale(1.05);
+}
+.home-card-img-placeholder {
+  overflow: hidden;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-card-img-placeholder .num {
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.home-card-img-placeholder .txt {
+  font-size: 12px;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+  color: var(--white);
+}
+.home-card-body {
+  padding: 32px 28px;
+}
+.home-card-body h3 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+.home-card-body p {
+  font-size: 13px;
+  font-weight: 100;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.home-cta-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 60px 44px;
+  border: 1px solid var(--border);
+  background: var(--pale);
+}
+.home-cta-bar h3 {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.home-cta-bar p {
+  font-size: 14px;
+  font-weight: 100;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.home-cta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 960px) {
   nav { padding: 0 24px; }
   .nav-links { display: none; }
+  .nav-burger { display: flex; }
   .hero { grid-template-columns: 0 1fr; }
   .hero-sidebar { display: none; }
   .hero-text { padding: 100px 24px 40px; grid-column: 1 / 3; }
@@ -1016,6 +1178,7 @@ footer {
   .foot-main { padding: 36px 24px; }
   .foot-inner { flex-direction: column; gap: 24px; text-align: center; }
   .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .foot-nav { flex-wrap: wrap; justify-content: center; }
   .page-hero { grid-template-columns: 1fr; padding-top: 68px; }
   .page-hero-side { display: none; }
   .page-hero-text { padding: 40px 24px; }
@@ -1046,4 +1209,76 @@ footer {
   .immo-cta { grid-template-columns: 1fr; }
   .immo-cta-side { display: none; }
   .immo-cta-main { flex-direction: column; gap: 24px; padding: 48px 24px; }
+  .home-cards-wrap { grid-template-columns: 1fr; }
+  .home-cards-side { display: none; }
+  .home-cards-main { padding: 48px 24px; }
+  .home-cards-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .home-cta-bar { grid-template-columns: 1fr; gap: 24px; padding: 40px 28px; }
+  .home-cta-buttons { justify-content: flex-start; }
+}
+
+/* ── PHONE (< 480px) ───────────────────────────────────── */
+@media (max-width: 480px) {
+  .hero-title { font-size: 42px; }
+  .hero-desc { font-size: 14px; }
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { text-align: center; justify-content: center; }
+  .hero-photo { min-height: 280px; }
+  .hero-text { padding: 88px 20px 32px; }
+  .hero-bottom { padding: 20px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 28px 20px; }
+  .stat-num { font-size: 36px; }
+  .about-photos { height: 280px; }
+  .about-text { padding: 36px 20px; }
+  .services-main { padding: 40px 20px; }
+  .services-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .gallery-main { padding: 40px 20px; }
+  .gallery-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .gi { height: 200px; }
+  .process-main { padding: 40px 20px; }
+  .steps { grid-template-columns: 1fr; }
+  .step { padding: 28px 20px; }
+  .contact-info { padding: 40px 20px; }
+  .contact-form { padding: 36px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+  .foot-main { padding: 28px 20px; }
+  .foot-nav { flex-direction: column; gap: 16px; }
+  .page-hero-text { padding: 32px 20px; }
+  .page-hero-title { margin-bottom: 16px; }
+  .page-hero-desc { font-size: 13px; margin-bottom: 24px; }
+  .page-hero-stats { flex-wrap: wrap; gap: 16px; }
+  .ph-stat { padding: 12px 20px 12px 0; margin-right: 0; }
+  .breadcrumb-main { padding: 12px 20px; font-size: 10px; }
+  .section-intro-text { padding: 36px 20px; }
+  .section-intro-aside { padding: 28px 20px; }
+  .listing-main { padding: 36px 20px; }
+  .listing-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .property-header { padding: 24px 20px; }
+  .property-name { font-size: 24px; }
+  .property-photos { grid-template-columns: 1fr; height: auto; }
+  .property-photos .pp { height: 200px; }
+  .property-specs { grid-template-columns: 1fr 1fr; }
+  .spec-item { padding: 16px 20px; }
+  .property-desc { padding: 20px; }
+  .property-cta { padding: 20px; }
+  .terrains-main { padding: 36px 20px; }
+  .terrain-info { padding: 20px; }
+  .terrain-specs { flex-wrap: wrap; gap: 16px; }
+  .ts { padding-right: 16px; }
+  .immo-cta-main { padding: 36px 20px; }
+  .immo-cta-text h3 { font-size: 22px; }
+  .home-cards-main { padding: 36px 20px; }
+  .home-cards-grid { grid-template-columns: 1fr; gap: 20px; }
+  .home-card { grid-template-rows: 200px auto auto; }
+  .home-card-body { padding: 24px 20px; }
+  .home-card-body h3 { font-size: 20px; }
+  .home-cta-bar { padding: 32px 20px; }
+  .home-cta-bar h3 { font-size: 22px; }
+  .home-cta-buttons { flex-direction: column; }
+  .home-cta-buttons .btn { text-align: center; justify-content: center; width: 100%; }
+  .sec-title { margin-bottom: 16px; }
+  .sec-body { font-size: 14px; }
+  .btn { padding: 12px 20px; font-size: 10px; }
 }
