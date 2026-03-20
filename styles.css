@@ -101,21 +101,21 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 48px;
-  height: 68px;
+  height: 84px;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   transition: height 0.3s ease, box-shadow 0.3s ease;
 }
 nav.scrolled {
-  height: 56px;
+  height: 68px;
   box-shadow: 0 1px 20px rgba(0,0,0,0.06);
 }
 .nav-logo {
   display: flex; align-items: center;
-  height: 32px;
+  height: 52px;
 }
 .nav-logo svg {
-  height: 28px;
+  height: 52px;
   width: auto;
 }
 .nav-links {
@@ -679,9 +679,12 @@ footer {
   margin-bottom: 32px; padding-bottom: 32px;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.foot-logo svg { height: 22px; width: auto; }
-.foot-logo svg path, .foot-logo svg polygon, .foot-logo svg rect {
-  fill: var(--white);
+.foot-logo svg { height: 30px; width: auto; }
+.foot-logo svg path, .foot-logo svg polygon {
+  fill: rgba(255,255,255,0.7) !important;
+}
+.foot-logo svg rect {
+  fill: rgba(255,255,255,0.12) !important;
 }
 .foot-nav {
   display: flex; gap: 32px; list-style: none;
