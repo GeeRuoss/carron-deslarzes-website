@@ -99,23 +99,23 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* ── NAVIGATION ─────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 48px;
-  height: 84px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 0 48px 12px;
+  height: 96px;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   transition: height 0.3s ease, box-shadow 0.3s ease;
 }
 nav.scrolled {
-  height: 68px;
+  height: 80px;
   box-shadow: 0 1px 20px rgba(0,0,0,0.06);
 }
 .nav-logo {
   display: flex; align-items: center;
-  height: 52px;
+  height: 64px;
 }
 .nav-logo svg {
-  height: 52px;
+  height: 64px;
   width: auto;
 }
 .nav-links {
