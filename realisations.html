@@ -88,8 +88,8 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       display: flex; align-items: flex-end; justify-content: space-between;
-      padding: 0 48px 12px;
-      height: 96px;
+      padding: 0 48px 10px;
+      height: 78px;
       background: var(--white);
       border-bottom: 1px solid var(--border);
       transition: height 0.3s ease, box-shadow 0.3s ease;
@@ -100,10 +100,10 @@
     }
     .nav-logo {
       display: flex; align-items: center;
-      height: 64px;
+      height: 48px;
     }
     .nav-logo svg {
-      height: 64px;
+      height: 48px;
       width: auto;
     }
     .nav-links {
@@ -769,7 +769,10 @@
 
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 960px) {
-      nav { padding: 0 24px; }
+      nav { padding: 0 20px; height: 64px; align-items: center; }
+    nav.scrolled { height: 56px; }
+    .nav-logo { height: 44px; }
+    .nav-logo svg { height: 44px; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
       .hero { grid-template-columns: 0 1fr; }
@@ -1357,7 +1360,7 @@
 <nav id="nav">
   <a href="index.html" class="nav-logo">
     <!-- Logo SVG Carron + Deslarzes -->
-    <svg viewBox="0 0 219.33 53.35" xmlns="http://www.w3.org/2000/svg" style="height:64px;width:auto;">
+    <svg viewBox="0 0 219.33 53.35" xmlns="http://www.w3.org/2000/svg" style="height:48px;width:auto;">
   <g>
     <g>
       <g>
