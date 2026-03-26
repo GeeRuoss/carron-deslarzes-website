@@ -133,31 +133,13 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 68px 1fr auto;
       background: var(--white);
       position: relative;
     }
-    .hero-sidebar {
-      grid-column: 1;
-      grid-row: 1 / 4;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 40px;
-      gap: 32px;
-    }
-    .hero-sidebar-line {
-      width: 1px;
-      flex: 1;
-      max-height: 200px;
-      background: linear-gradient(to bottom, transparent, var(--light));
-      margin-top: 68px;
-    }
     .hero-text {
-      grid-column: 2;
+      grid-column: 1;
       grid-row: 2;
       display: flex;
       flex-direction: column;
@@ -214,7 +196,7 @@
       background: var(--black); color: var(--white);
     }
     .hero-photo {
-      grid-column: 3;
+      grid-column: 2;
       grid-row: 2 / 4;
       position: relative;
       overflow: hidden;
@@ -237,7 +219,7 @@
       display: flex; align-items: center; gap: 8px;
     }
     .hero-bottom {
-      grid-column: 2;
+      grid-column: 1;
       grid-row: 3;
       padding: 32px 64px 40px 56px;
       display: flex; align-items: center; gap: 32px;
@@ -251,13 +233,9 @@
     /* ── STATS ──────────────────────────────────────────────── */
     .stats {
       display: grid;
-      grid-template-columns: 56px repeat(4, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-    }
-    .stats-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
     }
     .stat-item {
       padding: 48px 36px;
@@ -287,22 +265,7 @@
     /* ── ABOUT ──────────────────────────────────────────────── */
     .about {
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
-    }
-    .about-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
-      position: relative;
-    }
-    .about-side-label {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%) rotate(-90deg);
-      white-space: nowrap;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
+      grid-template-columns: 1fr 1fr;
     }
     .about-photos {
       display: grid;
@@ -384,11 +347,6 @@
     /* ── SERVICES ───────────────────────────────────────────── */
     .services {
       background: var(--black);
-      display: grid;
-      grid-template-columns: 56px 1fr;
-    }
-    .services-side {
-      border-right: 1px solid rgba(255,255,255,0.08);
     }
     .services-main {
       padding: 80px 64px;
@@ -444,14 +402,7 @@
 
     /* ── GALERIE ────────────────────────────────────────────── */
     .gallery-section {
-      display: grid;
-      grid-template-columns: 56px 1fr;
       background: var(--pale);
-    }
-    .gallery-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
-      display: flex; align-items: center; justify-content: center;
     }
     .gallery-main {
       padding: 80px 64px;
@@ -511,12 +462,7 @@
 
     /* ── PROCESS ────────────────────────────────────────────── */
     .process {
-      display: grid;
-      grid-template-columns: 56px 1fr;
       background: var(--white);
-    }
-    .process-side {
-      border-right: 1px solid var(--border);
     }
     .process-main {
       padding: 80px 64px;
@@ -562,11 +508,8 @@
     /* ── CONTACT ────────────────────────────────────────────── */
     .contact {
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       background: var(--dark);
-    }
-    .contact-side {
-      border-right: 1px solid rgba(255,255,255,0.06);
     }
     .contact-info {
       padding: 80px 60px 80px 56px;
@@ -649,13 +592,8 @@
 
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
-      display: grid;
-      grid-template-columns: 56px 1fr;
       background: var(--black);
       border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .foot-side {
-      border-right: 1px solid rgba(255,255,255,0.06);
     }
     .foot-main {
       padding: 48px 64px;
@@ -775,38 +713,26 @@
     .nav-logo svg { height: 44px; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
-      .hero { grid-template-columns: 0 1fr; }
-      .hero-sidebar { display: none; }
-      .hero-text { padding: 100px 24px 40px; grid-column: 1 / 3; }
-      .hero-photo { grid-column: 1 / 3; grid-row: 3; min-height: 360px; }
-      .hero-bottom { grid-column: 1 / 3; padding: 24px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 100px 24px 40px; grid-column: 1; }
+      .hero-photo { grid-column: 1; grid-row: 3; min-height: 360px; }
+      .hero-bottom { grid-column: 1; padding: 24px; }
       .stats { grid-template-columns: repeat(2, 1fr); }
-      .stats-side { display: none; }
       .about { grid-template-columns: 1fr; }
-      .about-side { display: none; }
       .about-text { padding: 48px 24px; }
       .about-photos { height: 400px; }
-      .services { grid-template-columns: 1fr; }
-      .services-side { display: none; }
       .services-main { padding: 56px 24px; }
       .services-grid { grid-template-columns: 1fr; }
       .svc:nth-child(3n) { border-right: none; }
       .svc { border-bottom: 1px solid rgba(255,255,255,0.08); border-right: none; }
-      .gallery-section { grid-template-columns: 1fr; }
-      .gallery-side { display: none; }
       .gallery-main { padding: 56px 24px; }
       .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
       .gi { grid-column: span 1 !important; grid-row: span 1 !important; }
-      .process { grid-template-columns: 1fr; }
-      .process-side { display: none; }
       .process-main { padding: 56px 24px; }
       .steps { grid-template-columns: 1fr 1fr; }
       .contact { grid-template-columns: 1fr; }
-      .contact-side { display: none; }
       .contact-info { padding: 56px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
       .contact-form { padding: 48px 24px; }
-      footer { grid-template-columns: 1fr; }
-      .foot-side { display: none; }
       .foot-main { padding: 36px 24px; }
       .foot-inner { flex-direction: column; gap: 24px; text-align: center; }
       .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
@@ -818,18 +744,12 @@
     .page-hero {
       min-height: 70vh;
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       padding-top: 68px;
       background: var(--black);
       position: relative;
       overflow: hidden;
     }
-    .page-hero-side {
-      border-right: 1px solid rgba(255,255,255,0.06);
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: flex-end; padding-bottom: 40px;
-    }
-    .page-hero-side-line { width: 1px; flex: 1; max-height: 200px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15)); }
     .page-hero-text {
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 80px 64px 64px 56px;
@@ -884,11 +804,9 @@
 
     /* ── BREADCRUMB ─────────────────────────────────────────── */
     .breadcrumb {
-      display: grid; grid-template-columns: 56px 1fr;
       border-bottom: 1px solid var(--border);
       background: var(--pale);
     }
-    .breadcrumb-side { border-right: 1px solid var(--border); }
     .breadcrumb-main {
       padding: 16px 64px 16px 56px;
       display: flex; align-items: center; gap: 12px;
@@ -902,10 +820,9 @@
 
     /* ── SECTION INTRO ──────────────────────────────────────── */
     .section-intro {
-      display: grid; grid-template-columns: 56px 1fr 420px;
+      display: grid; grid-template-columns: 1fr 420px;
       border-bottom: 1px solid var(--border);
     }
-    .section-intro-side { border-right: 1px solid var(--border); background: var(--pale); }
     .section-intro-text { padding: 72px 64px 72px 56px; border-right: 1px solid var(--border); }
     .sec-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
     .sec-eyebrow-line { width: 24px; height: 1px; background: var(--accent); }
@@ -923,8 +840,7 @@
     .aside-val { font-size: 15px; font-weight: 100; color: var(--black); }
 
     /* ── LISTING SECTION ────────────────────────────────────── */
-    .listing-section { display: grid; grid-template-columns: 56px 1fr; }
-    .listing-side { border-right: 1px solid var(--border); background: var(--pale); }
+    .listing-section { }
     .listing-main { padding: 80px 64px; }
     .listing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
 
@@ -1031,10 +947,8 @@
 
     /* ── TERRAINS SECTION ───────────────────────────────────── */
     .terrains-section {
-      display: grid; grid-template-columns: 56px 1fr;
       background: var(--black);
     }
-    .terrains-side { border-right: 1px solid rgba(255,255,255,0.06); }
     .terrains-main { padding: 80px 64px; }
     .terrains-header { margin-bottom: 56px; }
     .terrains-header .sec-title { color: var(--white); }
@@ -1071,12 +985,10 @@
 
     /* ── PROCESS CTA ────────────────────────────────────────── */
     .immo-cta {
-      display: grid; grid-template-columns: 56px 1fr;
       background: var(--pale);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-    .immo-cta-side { border-right: 1px solid var(--border); }
     .immo-cta-main {
       padding: 64px;
       display: flex; justify-content: space-between; align-items: center;
@@ -1090,18 +1002,12 @@
     /* Page-specific responsive */
     @media (max-width: 960px) {
       .page-hero { grid-template-columns: 1fr !important; padding-top: 68px; }
-      .page-hero-side { display: none !important; }
       .page-hero-text { padding: 40px 24px !important; }
       .page-hero-photo-grid { position: relative; height: 280px; }
-      .breadcrumb { grid-template-columns: 1fr; }
-      .breadcrumb-side { display: none; }
       .breadcrumb-main { padding: 14px 24px; }
       .section-intro { grid-template-columns: 1fr; }
-      .section-intro-side { display: none; }
       .section-intro-text { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); }
       .section-intro-aside { padding: 36px 24px; }
-      .listing-section { grid-template-columns: 1fr; }
-      .listing-side { display: none; }
       .listing-main { padding: 48px 24px; }
       .property-header { flex-direction: column; gap: 16px; }
       .property-photos { grid-template-columns: 1fr 1fr; height: 240px; }
@@ -1110,17 +1016,12 @@
       .property-specs { grid-template-columns: 1fr 1fr; }
       .property-desc { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
       .property-cta { flex-direction: column; gap: 16px; }
-      .terrains-section { grid-template-columns: 1fr; }
-      .terrains-side { display: none; }
       .terrains-main { padding: 48px 24px; }
       .terrain-card { grid-template-columns: 1fr; }
       .terrain-photo { height: 220px; }
       .terrain-info { padding: 24px; }
-      .immo-cta { grid-template-columns: 1fr; }
-      .immo-cta-side { display: none; }
       .immo-cta-main { flex-direction: column; gap: 24px; padding: 48px 24px; }
       .cta-section { grid-template-columns: 1fr !important; }
-      .cta-side { display: none !important; }
       .cta-main { padding: 40px 24px !important; }
     }
   </style>
@@ -1131,14 +1032,9 @@
     .page-hero {
       min-height: 340px;
       background: var(--black);
-      display: grid;
-      grid-template-columns: 56px 1fr;
       border-bottom: 1px solid rgba(255,255,255,0.06);
       position: relative;
       overflow: hidden;
-    }
-    .page-hero-side {
-      border-right: 1px solid rgba(255,255,255,0.06);
     }
     .page-hero-content {
       padding: 140px 80px 60px;
@@ -1168,17 +1064,15 @@
     .page-hero-bg {
       position: absolute; inset: 0;
       opacity: 0.12;
-      background: url('photos/DSC09042.jpg') center / cover no-repeat;
+      background: url('photos/DSC09498.jpg') center / cover no-repeat;
       z-index: 1;
     }
 
     /* ── BREADCRUMB ──────────────────────────────────────────── */
     .breadcrumb {
-      display: grid; grid-template-columns: 56px 1fr;
       border-bottom: 1px solid var(--border);
       background: var(--pale);
     }
-    .breadcrumb-side { border-right: 1px solid var(--border); }
     .breadcrumb-inner {
       padding: 14px 80px;
       display: flex; align-items: center; gap: 8px;
@@ -1191,12 +1085,10 @@
 
     /* ── FILTERS ─────────────────────────────────────────────── */
     .filters-wrap {
-      display: grid; grid-template-columns: 56px 1fr;
       border-bottom: 1px solid var(--border);
       position: sticky; top: 64px; z-index: 90;
       background: var(--white);
     }
-    .filters-side { border-right: 1px solid var(--border); background: var(--pale); }
     .filters-inner {
       padding: 0 80px;
       display: flex; align-items: stretch; gap: 0;
@@ -1217,22 +1109,7 @@
 
     /* ── GALLERY GRID ────────────────────────────────────────── */
     .gallery-section {
-      display: grid; grid-template-columns: 56px 1fr;
       min-height: 400px;
-    }
-    .gallery-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
-      position: relative;
-    }
-    .gallery-side-label {
-      position: absolute; top: 60px; left: 50%;
-      font-size: 11px; font-weight: 400; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--muted);
-      white-space: nowrap;
-      writing-mode: vertical-lr;
-      transform: translateX(-50%) rotate(-90deg) translateX(-50%);
-      transform-origin: center center;
     }
     .gallery-main { padding: 64px 80px; }
 
@@ -1312,6 +1189,52 @@
       font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
     }
 
+    /* ── LIGHTBOX ──────────────────────────────────────────── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img {
+      max-width: 90vw; max-height: 85vh;
+      object-fit: contain;
+      border-radius: 2px;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+    .lightbox.open img { transform: scale(1); }
+    .lightbox-close {
+      position: absolute; top: 24px; right: 24px;
+      width: 44px; height: 44px;
+      background: none; border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; font-size: 24px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s;
+    }
+    .lightbox-close:hover { border-color: rgba(255,255,255,0.6); }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: none; border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s;
+    }
+    .lightbox-nav:hover { border-color: rgba(255,255,255,0.6); }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+    .lightbox-caption {
+      position: absolute; bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 12px; font-weight: 400;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      text-align: center; white-space: nowrap;
+    }
+
     /* Empty state */
     .gallery-empty {
       display: none;
@@ -1333,17 +1256,9 @@
     }
     @media (max-width: 640px) {
       .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-section { grid-template-columns: 1fr; }
-      .gallery-side { display: none; }
       .gallery-main { padding: 32px 24px; }
-      .filters-wrap { grid-template-columns: 1fr; }
-      .filters-side { display: none; }
       .filters-inner { padding: 0 24px; }
-      .page-hero { grid-template-columns: 1fr; }
-      .page-hero-side { display: none; }
       .page-hero-content { padding: 100px 24px 40px; }
-      .breadcrumb { grid-template-columns: 1fr; }
-      .breadcrumb-side { display: none; }
       .breadcrumb-inner { padding: 14px 24px; }
       .foot-main { padding: 28px 20px; }
       .foot-nav { flex-direction: column; gap: 16px; }
@@ -1444,7 +1359,6 @@
 
 <!-- ── PAGE HERO ──────────────────────────────── -->
 <section class="page-hero">
-  <div class="page-hero-side"></div>
   <div class="page-hero-content">
     <div class="page-hero-eyebrow fu">
       <div class="line"></div>
@@ -1460,7 +1374,6 @@
 
 <!-- ── FILTRES ────────────────────────────────── -->
 <div class="filters-wrap">
-  <div class="filters-side"></div>
   <div class="filters-inner">
     <button class="filter-btn active" data-filter="all">Tout</button>
     <button class="filter-btn" data-filter="charpente">Charpente</button>
@@ -1473,69 +1386,608 @@
 
 <!-- ── GALERIE ────────────────────────────────── -->
 <section class="gallery-section">
-  <div class="gallery-side">
-    <span class="gallery-side-label">Réalisations</span>
-  </div>
   <div class="gallery-main">
 
     <p class="gallery-count fu"><span id="count">0</span> projet(s)</p>
 
     <div class="gallery-grid" id="galleryGrid">
 
-      <!-- ═══════════════════════════════════════════════════
-           AJOUTER VOS RÉALISATIONS ICI
-           Pour chaque projet, copiez un bloc .gallery-card
-           et remplacez :
-             • data-cat   → catégorie du filtre (charpente / couverture / renovation / bois)
-             • src        → chemin de l'image (ex: photos/realisations/mon-projet.jpg)
-             • alt        → description de l'image
-             • .gallery-card-cat → label de catégorie affiché
-             • .gallery-card-title → nom du projet
-             • .gallery-card-loc  → lieu
-             • .gallery-card-year → année
-      ══════════════════════════════════════════════════════ -->
-
-      <!-- EXEMPLE — Charpente -->
-      <!--
-      <div class="gallery-card fu" data-cat="charpente">
+      <div class="gallery-card fu" data-cat="bois">
         <div class="gallery-card-img">
-          <img src="photos/realisations/charpente-bruson.jpg" alt="Charpente traditionnelle à Bruson" />
+          <img src="photos/realisations/01.jpg" alt="Chalet facade bois ancien avec montagnes" />
         </div>
         <div class="gallery-card-info">
           <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Charpente traditionnelle</div>
-            <div class="gallery-card-loc">Bruson, Valais</div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Façade bois ancien</div>
+            <div class="gallery-card-loc">Valais</div>
           </div>
-          <div class="gallery-card-year">2024</div>
         </div>
       </div>
-      -->
 
-      <!-- EXEMPLE — Couverture -->
-      <!--
       <div class="gallery-card fu" data-cat="couverture">
         <div class="gallery-card-img">
-          <img src="photos/realisations/toiture-verbier.jpg" alt="Toiture ardoise à Verbier" />
+          <img src="photos/realisations/02.jpg" alt="Chalet bois avec terrasse et montagnes enneigées" />
         </div>
         <div class="gallery-card-info">
           <div>
             <div class="gallery-card-cat">Couverture</div>
-            <div class="gallery-card-title">Toiture en ardoise</div>
-            <div class="gallery-card-loc">Verbier, Valais</div>
+            <div class="gallery-card-title">Chalet toiture ardoise</div>
+            <div class="gallery-card-loc">Valais</div>
           </div>
-          <div class="gallery-card-year">2024</div>
         </div>
       </div>
-      -->
 
-      <!-- ÉTAT VIDE — affiché quand aucune image n'est présente -->
-      <div class="gallery-empty show" id="emptyState">
-        <div style="width:48px;height:48px;border:1px dashed rgba(0,0,0,0.15);display:flex;align-items:center;justify-content:center;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/07.jpg" alt="Chalet contemporain bois et pierre" />
         </div>
-        <p>Ajoutez vos photos dans <strong>photos/realisations/</strong></p>
-        <p style="font-size:10px;color:var(--light);">Puis décommentez les bleds .gallery-card dans le HTML</p>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Chalet contemporain</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/11.jpg" alt="Détail toiture pignon bois neuf" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Pignon & toiture</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="renovation">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/12.jpg" alt="Deux chalets traditionnels" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Rénovation</div>
+            <div class="gallery-card-title">Chalets traditionnels</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/13.jpg" alt="Balcon bois tourné traditionnel" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Balcon traditionnel</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/14.jpg" alt="Nouvelle construction bois clair" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Construction neuve</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/15.jpg" alt="Charpente neuve avec balcon" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Charpente & balcon</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/16.jpg" alt="Véhicule utilitaire Carron Deslarzes" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Sur le terrain</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/17.jpg" alt="Bâtiment bardage vertical contemporain" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Bardage vertical</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/18.jpg" alt="Détail jonction toiture et store" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Jonction toiture</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/19.jpg" alt="Vue aérienne complexe de chalets" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Complexe résidentiel</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/20.jpg" alt="Vue village toitures chalets" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Toitures village</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/21.jpg" alt="Chalet moderne dans une prairie" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Chalet moderne</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/22.jpg" alt="Chalet bois et pierre à flanc de coteau" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Bois & pierre</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/23.jpg" alt="Chalet toiture ardoise volets verts" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Toiture & volets</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/24.jpg" alt="Chalet bois clair sur coteau" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Chalet sur coteau</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/25.jpg" alt="Chalet avec balcon et rosettes décoratives" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Balcon & rosettes</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/26.jpg" alt="Bâtiment bardage gris et bois neuf" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Bardage mixte</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="renovation">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/27.jpg" alt="Chalet village avec escalier extérieur" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Rénovation</div>
+            <div class="gallery-card-title">Escalier extérieur</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/28.jpg" alt="Grand chalet bois sculpté traditionnel" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Bois sculpté</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/29.jpg" alt="Chalet traditionnel en contre-plongée" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Façade traditionnelle</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/30.jpg" alt="Maison contemporaine bardage gris" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Maison contemporaine</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="renovation">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/31.jpg" alt="Chalet façade vieux bois récupéré" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Rénovation</div>
+            <div class="gallery-card-title">Vieux bois récupéré</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="renovation">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/32.jpg" alt="Chalet vieux bois vue sur les montagnes" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Rénovation</div>
+            <div class="gallery-card-title">Vieux bois & montagne</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="renovation">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/33.jpg" alt="Grange convertie en habitation" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Rénovation</div>
+            <div class="gallery-card-title">Grange convertie</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/34.jpg" alt="Terrasse couverte en bois ancien" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Terrasse couverte</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/35.jpg" alt="Bâtiments village avec balcons en bois" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Balcons village</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/36.jpg" alt="Chalet toiture ardoise dans le paysage" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Toiture paysage</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/37.jpg" alt="Chalet bois et pierre avec garage" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Bois & pierre</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/38.jpg" alt="Détail faîtière bois ancien et neuf" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Faîtière mixte</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/39.jpg" alt="Construction neuve bois blond" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Construction neuve</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/40.jpg" alt="Chantier chalet neuf en cours" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Chantier en cours</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="renovation">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/41.jpg" alt="Chalet rénové avec panneaux solaires" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Rénovation</div>
+            <div class="gallery-card-title">Rénovation & solaire</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/42.jpg" alt="Deux chalets jumeaux en construction" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Chalets jumeaux</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="couverture">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/43.jpg" alt="Vue aérienne village montagne" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Couverture</div>
+            <div class="gallery-card-title">Vue de village</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/44.jpg" alt="Atelier stockage bois Carron Deslarzes" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Atelier & stockage</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="bois">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/45.jpg" alt="Dépôt bois récupéré" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Bois &amp; Façade</div>
+            <div class="gallery-card-title">Dépôt bois ancien</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/46.jpg" alt="Levage de charpente sur chantier" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Levage charpente</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/03.jpg" alt="Plafond poutres anciennes en croix" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Poutres anciennes</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/04.jpg" alt="Escalier bois moderne multi-niveaux" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Escalier bois moderne</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/05.jpg" alt="Plafond poutres anciennes avec luminaire" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Charpente & luminaire</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/06.jpg" alt="Chambre avec poutres apparentes" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Poutres apparentes</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/08.jpg" alt="Salle à manger avec plafond bois" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Aménagement intérieur</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/09.jpg" alt="Couloir puits de lumière plafond bois" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Puits de lumière</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-card fu" data-cat="charpente">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/10.jpg" alt="Plafond lambrissé en bois neuf" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Charpente</div>
+            <div class="gallery-card-title">Lambris plafond</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
       </div>
 
     </div><!-- /gallery-grid -->
@@ -1544,8 +1996,7 @@
 
 
 <!-- ── CTA ────────────────────────────────────── -->
-<div class="cta-section" style="display:grid;grid-template-columns:56px 1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div class="cta-side" style="border-right:1px solid var(--border);"></div>
+<div class="cta-section" style="background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="cta-main" style="padding:64px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;">
     <div>
       <h3 style="font-size:28px;font-weight:400;letter-spacing:-0.02em;color:var(--black);margin-bottom:10px;" class="fu">Un projet similaire ?</h3>
@@ -1561,7 +2012,6 @@
 
 <!-- ── FOOTER ─────────────────────────────────── -->
 <footer>
-  <div class="foot-side"></div>
   <div class="foot-main">
     <div class="foot-inner">
       <div class="foot-logo">
@@ -1698,6 +2148,80 @@
       });
     });
   }
+
+  // ── LIGHTBOX ──────────────────────────────────
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  lightbox.innerHTML = `
+    <button class="lightbox-close">&times;</button>
+    <button class="lightbox-nav lightbox-prev">&#8592;</button>
+    <button class="lightbox-nav lightbox-next">&#8594;</button>
+    <img src="" alt="" />
+    <div class="lightbox-caption"></div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lbImg = lightbox.querySelector('img');
+  const lbCaption = lightbox.querySelector('.lightbox-caption');
+  let lbIndex = 0;
+
+  function getVisibleCards() {
+    return [...document.querySelectorAll('.gallery-card:not(.hidden)')];
+  }
+
+  function openLightbox(index) {
+    const visible = getVisibleCards();
+    if (index < 0 || index >= visible.length) return;
+    lbIndex = index;
+    const card = visible[index];
+    const img = card.querySelector('img');
+    const title = card.querySelector('.gallery-card-title');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCaption.textContent = title ? title.textContent : '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gallery-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const visible = getVisibleCards();
+      const idx = visible.indexOf(card);
+      if (idx !== -1) openLightbox(idx);
+    });
+  });
+
+  lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const visible = getVisibleCards();
+    openLightbox((lbIndex - 1 + visible.length) % visible.length);
+  });
+  lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const visible = getVisibleCards();
+    openLightbox((lbIndex + 1) % visible.length);
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') {
+      const visible = getVisibleCards();
+      openLightbox((lbIndex - 1 + visible.length) % visible.length);
+    }
+    if (e.key === 'ArrowRight') {
+      const visible = getVisibleCards();
+      openLightbox((lbIndex + 1) % visible.length);
+    }
+  });
 </script>
 </body>
 </html>

@@ -108,11 +108,10 @@
     /* ── PAGE HERO ──────────────────────────────────────────── */
     .page-hero {
       min-height: 400px; background: var(--black);
-      display: grid; grid-template-columns: 56px 1fr 480px;
+      display: grid; grid-template-columns: 1fr 480px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
       position: relative; overflow: hidden;
     }
-    .page-hero-side { border-right: 1px solid rgba(255,255,255,0.06); }
     .page-hero-content { padding: 140px 72px 64px; position: relative; z-index: 2; }
     .page-hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
     .page-hero-eyebrow .line { width: 32px; height: 1px; background: var(--accent); }
@@ -147,10 +146,9 @@
 
     /* ── BREADCRUMB ──────────────────────────────────────────── */
     .breadcrumb {
-      display: grid; grid-template-columns: 56px 1fr;
+      display: grid; grid-template-columns: 1fr;
       border-bottom: 1px solid var(--border); background: var(--pale);
     }
-    .breadcrumb-side { border-right: 1px solid var(--border); }
     .breadcrumb-inner {
       padding: 14px 80px; display: flex; align-items: center; gap: 8px;
       font-size: 11px; font-weight: 100; color: var(--muted);
@@ -162,30 +160,18 @@
 
     /* ── INTRO STRIP ────────────────────────────────────────── */
     .intro-strip {
-      display: grid; grid-template-columns: 56px 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid var(--border);
     }
-    .intro-strip-side { border-right: 1px solid var(--border); background: var(--pale); }
     .intro-strip-text { padding: 72px 64px; border-right: 1px solid var(--border); }
     .intro-strip-aside { padding: 72px 56px; display: flex; flex-direction: column; justify-content: flex-end; }
     .intro-strip-aside p { font-size: 13px; font-weight: 100; color: var(--muted); line-height: 1.8; }
 
     /* ── SERVICE BLOCK ──────────────────────────────────────── */
     .svc-block {
-      display: grid; grid-template-columns: 56px 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid var(--border);
       min-height: 520px;
-    }
-    .svc-block-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
-      position: relative;
-    }
-    .svc-block-num {
-      position: absolute; bottom: 32px; left: 50%;
-      transform: translateX(-50%);
-      font-size: 11px; font-weight: 400; letter-spacing: 0.2em;
-      color: var(--muted); text-transform: uppercase;
     }
     .svc-block-photo {
       overflow: hidden; position: relative;
@@ -241,10 +227,9 @@
 
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
-      display: grid; grid-template-columns: 56px 1fr;
+      display: grid; grid-template-columns: 1fr;
       background: var(--black); border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .foot-side { border-right: 1px solid rgba(255,255,255,0.06); }
     .foot-main { padding: 48px 64px; }
     .foot-inner {
       display: flex; justify-content: space-between; align-items: center;
@@ -340,12 +325,8 @@
 
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1100px) {
-      .page-hero { grid-template-columns: 56px 1fr; }
+      .page-hero { grid-template-columns: 1fr; }
       .page-hero-photos { display: none; }
-      .intro-strip { grid-template-columns: 1fr 1fr; }
-      .intro-strip-side { display: none; }
-      .svc-block { grid-template-columns: 1fr 1fr; }
-      .svc-block-side { display: none; }
     }
     @media (max-width: 960px) {
       nav { padding: 0 20px; height: 64px; align-items: center; }
@@ -354,25 +335,19 @@
     .nav-logo svg { height: 44px; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
-      footer { grid-template-columns: 1fr; }
-      .foot-side { display: none; }
       .foot-main { padding: 36px 24px; }
       .foot-inner { flex-direction: column; gap: 24px; text-align: center; }
       .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .foot-nav { flex-wrap: wrap; justify-content: center; }
       .cta-section { grid-template-columns: 1fr !important; }
-      .cta-side { display: none !important; }
       .cta-main { padding: 40px 24px !important; }
     }
     @media (max-width: 640px) {
       .page-hero { grid-template-columns: 1fr !important; }
-      .page-hero-side { display: none; }
       .page-hero-content { padding: 100px 24px 40px; min-width: 0; }
       .page-hero-desc { max-width: 100%; }
       .page-hero-photos { height: 250px; }
       .page-hero-stats { flex-wrap: wrap; gap: 0; }
-      .breadcrumb { grid-template-columns: 1fr; }
-      .breadcrumb-side { display: none; }
       .breadcrumb-inner { padding: 14px 24px; }
       .svc-block, .intro-strip { grid-template-columns: 1fr; }
       .svc-block-photo { height: 280px; }
@@ -492,7 +467,6 @@
 
 <!-- ── PAGE HERO ──────────────────────────────── -->
 <section class="page-hero">
-  <div class="page-hero-side"></div>
   <div class="page-hero-content">
     <div class="page-hero-eyebrow fu">
       <div class="line"></div>
@@ -526,8 +500,8 @@
     </div>
   </div>
   <div class="page-hero-photos">
-    <div><img src="photos/DSC09076.jpg" alt="Bruson, Valais" /></div>
-    <div><img src="photos/DSC09091.jpg" alt="Construction charpente" /></div>
+    <div><img src="photos/DSC09625.jpg" alt="Bruson, Valais" /></div>
+    <div><img src="photos/DSC09478.jpg" alt="Chalet montagne" /></div>
   </div>
 </section>
 
@@ -536,7 +510,6 @@
 
 <!-- ── INTRO ──────────────────────────────────── -->
 <div class="intro-strip">
-  <div class="intro-strip-side"></div>
   <div class="intro-strip-text">
     <div class="sec-eyebrow fu" style="margin-bottom:20px;">
       <div class="sec-eyebrow-line"></div>
@@ -552,9 +525,6 @@
 
 <!-- ── BIEN 01 — LES COLCHIQUES ──────────────── -->
 <div class="svc-block" id="a-vendre">
-  <div class="svc-block-side">
-    <span class="svc-block-num">01</span>
-  </div>
   <div class="svc-block-photo fu">
     <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/a397e6484e44456ea9baec99dbc61aa8_52-HoD0FQ.png" alt="Les Colchiques — Face Nord-Ouest" style="object-fit:contain;background:#fff;" />
     <div class="svc-block-photo-badge">À Vendre</div>
@@ -579,9 +549,6 @@
 
 <!-- ── BIEN 02 — PLAN ────────────────────────── -->
 <div class="svc-block" id="plan">
-  <div class="svc-block-side">
-    <span class="svc-block-num">02</span>
-  </div>
   <div class="svc-block-photo fu">
     <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/aea7a8a050274080929840acedbf3e98_V2.png" alt="Plan rez-de-chaussée Les Colchiques" style="object-fit:contain;background:#fff;" />
     <div class="svc-block-photo-badge">Plans</div>
@@ -606,11 +573,8 @@
 
 <!-- ── BIEN 03 — À LOUER ─────────────────────── -->
 <div class="svc-block" id="a-louer">
-  <div class="svc-block-side">
-    <span class="svc-block-num">03</span>
-  </div>
   <div class="svc-block-photo fu">
-    <img src="photos/DSC09076.jpg" alt="Biens à louer — Bruson" />
+    <img src="photos/DSC09676-Edit.jpg" alt="Biens à louer — Bruson" />
     <div class="svc-block-photo-badge">À Louer</div>
   </div>
   <div class="svc-block-content">
@@ -631,11 +595,8 @@
 
 <!-- ── BIEN 04 — TERRAINS ────────────────────── -->
 <div class="svc-block" id="terrains">
-  <div class="svc-block-side">
-    <span class="svc-block-num">04</span>
-  </div>
   <div class="svc-block-photo fu">
-    <img src="photos/DSC09091.jpg" alt="Terrain à bâtir — Bruson, Valais" />
+    <img src="photos/DSC09652-Edit.jpg" alt="Terrain à bâtir — Bruson, Valais" />
     <div class="svc-block-photo-badge">Terrains</div>
   </div>
   <div class="svc-block-content">
@@ -657,8 +618,7 @@
 
 
 <!-- ── CTA ────────────────────────────────────── -->
-<div class="cta-section" style="display:grid;grid-template-columns:56px 1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div class="cta-side" style="border-right:1px solid var(--border);"></div>
+<div class="cta-section" style="display:grid;grid-template-columns:1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="cta-main" style="padding:64px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;">
     <div>
       <h3 class="fu" style="font-size:26px;font-weight:400;letter-spacing:-0.02em;color:var(--black);margin-bottom:10px;">Une question sur un bien ?</h3>
@@ -674,7 +634,6 @@
 
 <!-- ── FOOTER ─────────────────────────────────── -->
 <footer>
-  <div class="foot-side"></div>
   <div class="foot-main">
     <div class="foot-inner">
       <div class="foot-logo">

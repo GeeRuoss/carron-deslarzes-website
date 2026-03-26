@@ -133,31 +133,13 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 68px 1fr auto;
       background: var(--white);
       position: relative;
     }
-    .hero-sidebar {
-      grid-column: 1;
-      grid-row: 1 / 4;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 40px;
-      gap: 32px;
-    }
-    .hero-sidebar-line {
-      width: 1px;
-      flex: 1;
-      max-height: 200px;
-      background: linear-gradient(to bottom, transparent, var(--light));
-      margin-top: 68px;
-    }
     .hero-text {
-      grid-column: 2;
+      grid-column: 1;
       grid-row: 2;
       display: flex;
       flex-direction: column;
@@ -214,7 +196,7 @@
       background: var(--black); color: var(--white);
     }
     .hero-photo {
-      grid-column: 3;
+      grid-column: 2;
       grid-row: 2 / 4;
       position: relative;
       overflow: hidden;
@@ -237,7 +219,7 @@
       display: flex; align-items: center; gap: 8px;
     }
     .hero-bottom {
-      grid-column: 2;
+      grid-column: 1;
       grid-row: 3;
       padding: 32px 64px 40px 56px;
       display: flex; align-items: center; gap: 32px;
@@ -251,13 +233,9 @@
     /* ── STATS ──────────────────────────────────────────────── */
     .stats {
       display: grid;
-      grid-template-columns: 56px repeat(4, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-    }
-    .stats-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
     }
     .stat-item {
       padding: 48px 36px;
@@ -287,22 +265,7 @@
     /* ── ABOUT ──────────────────────────────────────────────── */
     .about {
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
-    }
-    .about-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
-      position: relative;
-    }
-    .about-side-label {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%) rotate(-90deg);
-      white-space: nowrap;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
+      grid-template-columns: 1fr 1fr;
     }
     .about-photos {
       display: grid;
@@ -385,10 +348,7 @@
     .services {
       background: var(--black);
       display: grid;
-      grid-template-columns: 56px 1fr;
-    }
-    .services-side {
-      border-right: 1px solid rgba(255,255,255,0.08);
+      grid-template-columns: 1fr;
     }
     .services-main {
       padding: 80px 64px;
@@ -445,13 +405,8 @@
     /* ── GALERIE ────────────────────────────────────────────── */
     .gallery-section {
       display: grid;
-      grid-template-columns: 56px 1fr;
+      grid-template-columns: 1fr;
       background: var(--pale);
-    }
-    .gallery-side {
-      border-right: 1px solid var(--border);
-      background: var(--pale);
-      display: flex; align-items: center; justify-content: center;
     }
     .gallery-main {
       padding: 80px 64px;
@@ -512,11 +467,8 @@
     /* ── PROCESS ────────────────────────────────────────────── */
     .process {
       display: grid;
-      grid-template-columns: 56px 1fr;
+      grid-template-columns: 1fr;
       background: var(--white);
-    }
-    .process-side {
-      border-right: 1px solid var(--border);
     }
     .process-main {
       padding: 80px 64px;
@@ -562,11 +514,8 @@
     /* ── CONTACT ────────────────────────────────────────────── */
     .contact {
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       background: var(--dark);
-    }
-    .contact-side {
-      border-right: 1px solid rgba(255,255,255,0.06);
     }
     .contact-info {
       padding: 80px 60px 80px 56px;
@@ -650,12 +599,9 @@
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
       display: grid;
-      grid-template-columns: 56px 1fr;
+      grid-template-columns: 1fr;
       background: var(--black);
       border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .foot-side {
-      border-right: 1px solid rgba(255,255,255,0.06);
     }
     .foot-main {
       padding: 48px 64px;
@@ -775,38 +721,30 @@
     .nav-logo svg { height: 44px; }
       .nav-links { display: none; }
       .nav-burger { display: flex; }
-      .hero { grid-template-columns: 0 1fr; }
-      .hero-sidebar { display: none; }
-      .hero-text { padding: 100px 24px 40px; grid-column: 1 / 3; }
-      .hero-photo { grid-column: 1 / 3; grid-row: 3; min-height: 360px; }
-      .hero-bottom { grid-column: 1 / 3; padding: 24px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 100px 24px 40px; grid-column: 1; }
+      .hero-photo { grid-column: 1; grid-row: 3; min-height: 360px; }
+      .hero-bottom { grid-column: 1; padding: 24px; }
       .stats { grid-template-columns: repeat(2, 1fr); }
-      .stats-side { display: none; }
       .about { grid-template-columns: 1fr; }
-      .about-side { display: none; }
       .about-text { padding: 48px 24px; }
       .about-photos { height: 400px; }
       .services { grid-template-columns: 1fr; }
-      .services-side { display: none; }
       .services-main { padding: 56px 24px; }
       .services-grid { grid-template-columns: 1fr; }
       .svc:nth-child(3n) { border-right: none; }
       .svc { border-bottom: 1px solid rgba(255,255,255,0.08); border-right: none; }
       .gallery-section { grid-template-columns: 1fr; }
-      .gallery-side { display: none; }
       .gallery-main { padding: 56px 24px; }
       .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
       .gi { grid-column: span 1 !important; grid-row: span 1 !important; }
       .process { grid-template-columns: 1fr; }
-      .process-side { display: none; }
       .process-main { padding: 56px 24px; }
       .steps { grid-template-columns: 1fr 1fr; }
       .contact { grid-template-columns: 1fr; }
-      .contact-side { display: none; }
       .contact-info { padding: 56px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
       .contact-form { padding: 48px 24px; }
       footer { grid-template-columns: 1fr; }
-      .foot-side { display: none; }
       .foot-main { padding: 36px 24px; }
       .foot-nav { flex-wrap: wrap; justify-content: center; }
       .foot-inner { flex-direction: column; gap: 24px; text-align: center; }
@@ -818,18 +756,12 @@
     .page-hero {
       min-height: 70vh;
       display: grid;
-      grid-template-columns: 56px 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       padding-top: 68px;
       background: var(--black);
       position: relative;
       overflow: hidden;
     }
-    .page-hero-side {
-      border-right: 1px solid rgba(255,255,255,0.06);
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: flex-end; padding-bottom: 40px;
-    }
-    .page-hero-side-line { width: 1px; flex: 1; max-height: 200px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15)); }
     .page-hero-text {
       display: flex; flex-direction: column; justify-content: flex-end;
       padding: 80px 64px 64px 56px;
@@ -884,11 +816,10 @@
 
     /* ── BREADCRUMB ─────────────────────────────────────────── */
     .breadcrumb {
-      display: grid; grid-template-columns: 56px 1fr;
+      display: grid; grid-template-columns: 1fr;
       border-bottom: 1px solid var(--border);
       background: var(--pale);
     }
-    .breadcrumb-side { border-right: 1px solid var(--border); }
     .breadcrumb-main {
       padding: 16px 64px 16px 56px;
       display: flex; align-items: center; gap: 12px;
@@ -902,10 +833,9 @@
 
     /* ── SECTION INTRO ──────────────────────────────────────── */
     .section-intro {
-      display: grid; grid-template-columns: 56px 1fr 420px;
+      display: grid; grid-template-columns: 1fr 420px;
       border-bottom: 1px solid var(--border);
     }
-    .section-intro-side { border-right: 1px solid var(--border); background: var(--pale); }
     .section-intro-text { padding: 72px 64px 72px 56px; border-right: 1px solid var(--border); }
     .sec-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
     .sec-eyebrow-line { width: 24px; height: 1px; background: var(--accent); }
@@ -923,8 +853,7 @@
     .aside-val { font-size: 15px; font-weight: 100; color: var(--black); }
 
     /* ── LISTING SECTION ────────────────────────────────────── */
-    .listing-section { display: grid; grid-template-columns: 56px 1fr; }
-    .listing-side { border-right: 1px solid var(--border); background: var(--pale); }
+    .listing-section { display: grid; grid-template-columns: 1fr; }
     .listing-main { padding: 80px 64px; }
     .listing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
 
@@ -1031,10 +960,9 @@
 
     /* ── TERRAINS SECTION ───────────────────────────────────── */
     .terrains-section {
-      display: grid; grid-template-columns: 56px 1fr;
+      display: grid; grid-template-columns: 1fr;
       background: var(--black);
     }
-    .terrains-side { border-right: 1px solid rgba(255,255,255,0.06); }
     .terrains-main { padding: 80px 64px; }
     .terrains-header { margin-bottom: 56px; }
     .terrains-header .sec-title { color: var(--white); }
@@ -1071,12 +999,11 @@
 
     /* ── PROCESS CTA ────────────────────────────────────────── */
     .immo-cta {
-      display: grid; grid-template-columns: 56px 1fr;
+      display: grid; grid-template-columns: 1fr;
       background: var(--pale);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
-    .immo-cta-side { border-right: 1px solid var(--border); }
     .immo-cta-main {
       padding: 64px;
       display: flex; justify-content: space-between; align-items: center;
@@ -1090,18 +1017,14 @@
     /* Page-specific responsive */
     @media (max-width: 960px) {
       .page-hero { grid-template-columns: 1fr !important; padding-top: 68px; }
-      .page-hero-side { display: none !important; }
       .page-hero-text { padding: 40px 24px !important; }
       .page-hero-photo-grid { position: relative; height: 280px; }
       .breadcrumb { grid-template-columns: 1fr; }
-      .breadcrumb-side { display: none; }
       .breadcrumb-main { padding: 14px 24px; }
       .section-intro { grid-template-columns: 1fr; }
-      .section-intro-side { display: none; }
       .section-intro-text { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); }
       .section-intro-aside { padding: 36px 24px; }
       .listing-section { grid-template-columns: 1fr; }
-      .listing-side { display: none; }
       .listing-main { padding: 48px 24px; }
       .property-header { flex-direction: column; gap: 16px; }
       .property-photos { grid-template-columns: 1fr 1fr; height: 240px; }
@@ -1111,20 +1034,16 @@
       .property-desc { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
       .property-cta { flex-direction: column; gap: 16px; }
       .terrains-section { grid-template-columns: 1fr; }
-      .terrains-side { display: none; }
       .terrains-main { padding: 48px 24px; }
       .terrain-card { grid-template-columns: 1fr; }
       .terrain-photo { height: 220px; }
       .terrain-info { padding: 24px; }
       .immo-cta { grid-template-columns: 1fr; }
-      .immo-cta-side { display: none; }
       .immo-cta-main { flex-direction: column; gap: 24px; padding: 48px 24px; }
       .valeurs-section { grid-template-columns: 1fr !important; }
-      .valeurs-side { display: none !important; }
       .valeurs-grid { grid-template-columns: 1fr !important; }
       .valeurs-item { border-right: none !important; }
       .cta-section { grid-template-columns: 1fr !important; }
-      .cta-side { display: none !important; }
       .cta-main { padding: 40px 24px !important; }
       .chantier-photos { height: 200px !important; }
     }
@@ -1255,11 +1174,6 @@
 
 <!-- ── PAGE HEADER ───────────────────────────── -->
 <section class="page-hero" style="min-height:65vh;background:var(--black);overflow:hidden;">
-  <div class="page-hero-side" style="border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:40px;">
-    <div style="width:1px;flex:1;max-height:200px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.15));"></div>
-    <span class="vertical-label" style="color:rgba(255,255,255,0.2);margin-top:20px;">Bruson — Valais</span>
-    <span style="font-size:18px;color:#3a7d44;font-family:'NewBlack',sans-serif;font-weight:400;margin-top:20px;">+</span>
-  </div>
   <div class="page-hero-text" style="display:flex;flex-direction:column;justify-content:flex-end;padding:80px 64px 64px 56px;">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;" class="fu">
       <div style="width:24px;height:1px;background:var(--accent);"></div>
@@ -1277,22 +1191,19 @@
     </div>
   </div>
   <div style="position:relative;overflow:hidden;">
-    <img src="photos/DSC09042.jpg" alt="Atelier Carron Deslarzes" style="width:100%;height:100%;object-fit:cover;transition:filter 0.6s;" />
+    <img src="photos/DSC09563-Edit.jpg" alt="Chalets traditionnels Carron Deslarzes" style="width:100%;height:100%;object-fit:cover;transition:filter 0.6s;" />
   </div>
 </section>
 
 
 <!-- ── HISTOIRE ───────────────────────────────── -->
 <section class="about" id="about" style="border-top:none;">
-  <div class="about-side">
-    <span class="about-side-label">L'Entreprise</span>
-  </div>
   <div class="about-photos fu">
     <div class="about-photo-main">
-      <img src="photos/DSC09042.jpg" alt="Atelier Carron Deslarzes" />
+      <img src="photos/DSC09474.jpg" alt="Chalet bois et montagne" />
     </div>
     <div class="about-photo-secondary">
-      <img src="photos/DSC09064.jpg" alt="Taille de charpente à la main" />
+      <img src="photos/DSC09676-Edit.jpg" alt="Chalet contemporain bois" />
     </div>
     <div class="about-year-badge">Fondée 2008</div>
   </div>
@@ -1318,7 +1229,6 @@
 
 <!-- ── STATS ──────────────────────────────────── -->
 <div class="stats">
-  <div class="stats-side"></div>
   <div class="stat-item fu">
     <span class="plus-mark">+</span>
     <div class="stat-num">17</div>
@@ -1340,10 +1250,7 @@
 </div>
 
 <!-- ── VALEURS ────────────────────────────────── -->
-<section class="valeurs-section" style="display:grid;grid-template-columns:56px 1fr;border-top:1px solid var(--border);">
-  <div class="valeurs-side" style="border-right:1px solid var(--border);background:var(--pale);position:relative;">
-    <span class="about-side-label">Nos valeurs</span>
-  </div>
+<section class="valeurs-section" style="display:grid;grid-template-columns:1fr;border-top:1px solid var(--border);">
   <div class="valeurs-grid" style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);">
     <div style="padding:52px 48px;border-right:1px solid var(--border);" class="fu valeurs-item">
       <div style="font-size:28px;color:var(--accent);font-family:'NewBlack',sans-serif;font-weight:400;margin-bottom:20px;">+</div>
@@ -1365,7 +1272,6 @@
 
 <!-- ── PROCESSUS ──────────────────────────────── -->
 <section class="process">
-  <div class="process-side"></div>
   <div class="process-main">
     <div class="process-header">
       <div class="sec-eyebrow fu" style="margin-bottom:16px;">
@@ -1406,19 +1312,18 @@
 <!-- ── PHOTOS CHANTIER ────────────────────────── -->
 <div class="chantier-photos" style="display:grid;grid-template-columns:repeat(3,1fr);height:300px;gap:3px;border-top:1px solid var(--border);">
   <div style="overflow:hidden;">
-    <img src="photos/DSC09076.jpg" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.55s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+    <img src="photos/DSC09498.jpg" alt="Chalet vieux bois" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.55s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
   </div>
   <div style="overflow:hidden;">
-    <img src="photos/DSC09091.jpg" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.55s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+    <img src="photos/DSC09694-Edit.jpg" alt="Chalet vieux bois village" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.55s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
   </div>
   <div style="overflow:hidden;">
-    <img src="photos/DSC09064.jpg" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.55s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+    <img src="photos/DSC09625.jpg" alt="Construction neuve bois" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s,filter 0.55s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
   </div>
 </div>
 
 <!-- ── CTA CONTACT ────────────────────────────── -->
-<div class="cta-section" style="display:grid;grid-template-columns:56px 1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div class="cta-side" style="border-right:1px solid var(--border);"></div>
+<div class="cta-section" style="display:grid;grid-template-columns:1fr;background:var(--pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="cta-main" style="padding:64px;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;">
     <div>
       <h3 style="font-size:28px;font-weight:400;letter-spacing:-0.02em;color:var(--black);margin-bottom:10px;" class="fu">Un projet en tête ?</h3>
@@ -1433,7 +1338,6 @@
 
 <!-- ── FOOTER ─────────────────────────────────── -->
 <footer>
-  <div class="foot-side"></div>
   <div class="foot-main">
     <div class="foot-inner">
       <div class="foot-logo">
