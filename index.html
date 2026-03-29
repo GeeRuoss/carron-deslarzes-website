@@ -94,7 +94,14 @@
   </div>
 
   <div class="hero-photo fu d1">
-    <img src="photos/DSC09690.jpg" alt="Chalet Carron Deslarzes — charpente Valais" />
+    <div class="hero-slideshow">
+      <img class="slide active" src="photos/DSC09690.jpg"        alt="Chalet Carron Deslarzes — charpente Valais" />
+      <img class="slide"        src="photos/DSC09694-Edit.jpg"   alt="Réalisation charpente Valais" />
+      <img class="slide"        src="photos/DSC09715-Edit.jpg"   alt="Couverture toiture Valais" />
+      <img class="slide"        src="photos/DSC09676-Edit.jpg"   alt="Bois façade Valais" />
+      <img class="slide"        src="photos/DSC09625.jpg"        alt="Chantier bois Valais" />
+      <img class="slide"        src="photos/DSC09755.jpg"        alt="Chalet Valais" />
+    </div>
     <div class="hero-photo-caption">
       <span class="label">Chantier 2025</span>
       <span style="color:#3a7d44;font-size:14px;font-family:'NewBlack',sans-serif;font-weight:400;">+</span>
@@ -333,6 +340,15 @@
       if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('vis');
     });
   }, 150);
+
+  // Hero slideshow
+  const slides = document.querySelectorAll('.hero-slideshow .slide');
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 4000);
 
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
