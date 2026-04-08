@@ -1258,8 +1258,7 @@
     <li><a href="savoir-faire.html">Savoir-Faire</a></li>
     <li><a href="realisations.html">Réalisations</a></li>
     <li><a href="immobilier.html">Immobilier</a></li>
-    <li><a href="contact.html" style="color:var(--black);">Contact</a></li>
-    <li><a href="contact.html" class="nav-cta">Devis Gratuit</a></li>
+    <li><a href="contact.html" class="nav-cta">Contactez-nous</a></li>
   </ul>
   <button class="nav-burger" id="navBurger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1271,8 +1270,7 @@
   <a href="savoir-faire.html">Savoir-Faire</a>
   <a href="realisations.html">Réalisations</a>
   <a href="immobilier.html">Immobilier</a>
-  <a href="contact.html">Contact</a>
-  <a href="contact.html" class="btn btn-dark nav-cta">Devis Gratuit</a>
+  <a href="contact.html" class="btn btn-dark nav-cta">Contactez-nous</a>
 </div>
 
 
@@ -1300,7 +1298,7 @@
     </div>
     <h2 class="sec-title fu d1" style="margin-bottom:40px;">Votre projet,<br><span class="light">en détail</span></h2>
 
-    <form action="#" method="post" novalidate>
+    <form id="contactForm">
 
       <div class="form-row">
         <div class="form-group fu d2">
@@ -1527,6 +1525,29 @@
       });
     });
   }
+
+  // Contact form → mailto
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const prenom = document.getElementById('prenom').value;
+    const nom = document.getElementById('nom').value;
+    const email = document.getElementById('email').value;
+    const tel = document.getElementById('telephone').value;
+    const type = document.getElementById('type').value;
+    const lieu = document.getElementById('lieu').value;
+    const msg = document.getElementById('message').value;
+
+    const subject = 'Demande de devis — ' + prenom + ' ' + nom;
+    const body = 'Prénom : ' + prenom
+      + '\nNom : ' + nom
+      + '\nEmail : ' + email
+      + '\nTéléphone : ' + tel
+      + '\nType de projet : ' + type
+      + '\nLieu : ' + lieu
+      + '\n\nMessage :\n' + msg;
+
+    window.location.href = 'mailto:francois@cardes.ch?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
 </script>
 </body>
 </html>
