@@ -1105,7 +1105,7 @@
       white-space: nowrap;
     }
     .filter-btn:hover { color: var(--black); }
-    .filter-btn.active { color: var(--black); border-bottom-color: var(--accent); }
+    .filter-btn.active { color: var(--black); }
 
     /* ── GALLERY GRID ────────────────────────────────────────── */
     .gallery-section {
@@ -1169,6 +1169,47 @@
     .gallery-card-year {
       font-size: 10px; font-weight: 100; color: var(--light);
       flex-shrink: 0;
+    }
+
+    /* ── GROUPED GALLERY CARD ─────────────────── */
+    .gallery-card-group .gallery-card-img {
+      position: relative;
+    }
+    .gallery-card-group .gallery-card-img img {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.55s ease;
+    }
+    .gallery-card-group .gallery-card-img img.active {
+      opacity: 1;
+    }
+    .gallery-card-group:hover .gallery-card-img img.active {
+      transform: scale(1.05);
+    }
+    .gallery-card-nav {
+      position: absolute; bottom: 12px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 2;
+    }
+    .gallery-card-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .gallery-card-dot.active {
+      background: var(--white);
+    }
+    .gallery-card-counter {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(0,0,0,0.5);
+      color: var(--white);
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 2;
     }
 
     /* Placeholder (no image) */
@@ -1352,28 +1393,33 @@
 
 
 
-<!-- ── FILTRES ────────────────────────────────── -->
-<div class="filters-wrap">
-  <div class="filters-inner">
-    <button class="filter-btn active" data-filter="all">Tout</button>
-    <button class="filter-btn" data-filter="charpente">Charpente</button>
-    <button class="filter-btn" data-filter="renovation">Rénovation</button>
-    <button class="filter-btn" data-filter="facades">Façades</button>
-  </div>
-</div>
-
-
 <!-- ── GALERIE ────────────────────────────────── -->
 <section class="gallery-section">
   <div class="gallery-main">
 
-    <p class="gallery-count fu"><span id="count">0</span> projet(s)</p>
-
     <div class="gallery-grid" id="galleryGrid">
 
-      <div class="gallery-card fu" data-cat="facades">
+      <div class="gallery-card gallery-card-group fu" data-cat="facades charpente"
+           data-titles="Façade bois ancien,Chalet contemporain,Bois &amp; pierre,Poutres anciennes,Escalier bois moderne,Charpente &amp; luminaire,Poutres apparentes"
+           data-cats="Façades,Façades,Façades,Charpente,Charpente,Charpente,Charpente">
         <div class="gallery-card-img">
-          <img src="photos/realisations/01.jpg" alt="Chalet facade bois ancien avec montagnes" />
+          <img src="photos/realisations/01.jpg" alt="Façade bois ancien" class="active" />
+          <img src="photos/realisations/07.jpg" alt="Chalet contemporain" />
+          <img src="photos/realisations/37.jpg" alt="Chalet bois et pierre avec garage" />
+          <img src="photos/realisations/03.jpg" alt="Poutres anciennes" />
+          <img src="photos/realisations/04.jpg" alt="Escalier bois moderne" />
+          <img src="photos/realisations/05.jpg" alt="Charpente & luminaire" />
+          <img src="photos/realisations/06.jpg" alt="Poutres apparentes" />
+          <div class="gallery-card-counter">1 / 7</div>
+          <div class="gallery-card-nav">
+            <span class="gallery-card-dot active"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+          </div>
         </div>
         <div class="gallery-card-info">
           <div>
@@ -1384,22 +1430,19 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="facades">
+      <div class="gallery-card gallery-card-group fu" data-cat="renovation facades"
+           data-titles="Chalets traditionnels,Balcon traditionnel,Rénovation &amp; solaire"
+           data-cats="Rénovation,Façades,Rénovation">
         <div class="gallery-card-img">
-          <img src="photos/realisations/07.jpg" alt="Chalet contemporain bois et pierre" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Chalet contemporain</div>
-            <div class="gallery-card-loc">Valais</div>
+          <img src="photos/realisations/12.jpg" alt="Deux chalets traditionnels" class="active" />
+          <img src="photos/realisations/13.jpg" alt="Balcon bois tourné traditionnel" />
+          <img src="photos/realisations/41.jpg" alt="Chalet rénové avec panneaux solaires" />
+          <div class="gallery-card-counter">1 / 3</div>
+          <div class="gallery-card-nav">
+            <span class="gallery-card-dot active"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
           </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="renovation">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/12.jpg" alt="Deux chalets traditionnels" />
         </div>
         <div class="gallery-card-info">
           <div>
@@ -1410,22 +1453,17 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="facades">
+      <div class="gallery-card gallery-card-group fu" data-cat="renovation charpente"
+           data-titles="Sablage et rénovation,Charpente &amp; balcon"
+           data-cats="Rénovation,Charpente">
         <div class="gallery-card-img">
-          <img src="photos/realisations/13.jpg" alt="Balcon bois tourné traditionnel" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Balcon traditionnel</div>
-            <div class="gallery-card-loc">Valais</div>
+          <img src="photos/realisations/14.jpg" alt="Sablage et rénovation chalet bois" class="active" />
+          <img src="photos/realisations/15.jpg" alt="Charpente neuve avec balcon" />
+          <div class="gallery-card-counter">1 / 2</div>
+          <div class="gallery-card-nav">
+            <span class="gallery-card-dot active"></span>
+            <span class="gallery-card-dot"></span>
           </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/14.jpg" alt="Sablage et rénovation chalet bois" />
         </div>
         <div class="gallery-card-info">
           <div>
@@ -1436,41 +1474,23 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="charpente">
+
+      <div class="gallery-card gallery-card-group fu" data-cat="facades"
+           data-titles="Bardage vertical,Bardage mixte"
+           data-cats="Façades,Façades">
         <div class="gallery-card-img">
-          <img src="photos/realisations/15.jpg" alt="Charpente neuve avec balcon" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Charpente & balcon</div>
-            <div class="gallery-card-loc">Valais</div>
+          <img src="photos/realisations/17.jpg" alt="Bâtiment bardage vertical contemporain" class="active" />
+          <img src="photos/realisations/26.jpg" alt="Bâtiment bardage gris et bois neuf" />
+          <div class="gallery-card-counter">1 / 2</div>
+          <div class="gallery-card-nav">
+            <span class="gallery-card-dot active"></span>
+            <span class="gallery-card-dot"></span>
           </div>
-        </div>
-      </div>
-
-
-      <div class="gallery-card fu" data-cat="facades">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/17.jpg" alt="Bâtiment bardage vertical contemporain" />
         </div>
         <div class="gallery-card-info">
           <div>
             <div class="gallery-card-cat">Façades</div>
             <div class="gallery-card-title">Bardage vertical</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="facades">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/21.jpg" alt="Chalet moderne dans une prairie" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Chalet moderne</div>
             <div class="gallery-card-loc">Valais</div>
           </div>
         </div>
@@ -1491,7 +1511,29 @@
 
       <div class="gallery-card fu" data-cat="facades">
         <div class="gallery-card-img">
-          <img src="photos/realisations/24.jpg" alt="Chalet bois clair sur coteau" />
+          <img src="photos/realisations/21.jpg" alt="Chalet moderne dans une prairie" />
+        </div>
+        <div class="gallery-card-info">
+          <div>
+            <div class="gallery-card-cat">Façades</div>
+            <div class="gallery-card-title">Chalet moderne</div>
+            <div class="gallery-card-loc">Valais</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="gallery-card gallery-card-group fu" data-cat="facades"
+           data-titles="Chalet sur coteau,Balcon &amp; rosettes"
+           data-cats="Façades,Façades">
+        <div class="gallery-card-img">
+          <img src="photos/realisations/24.jpg" alt="Chalet bois clair sur coteau" class="active" />
+          <img src="photos/realisations/25.jpg" alt="Chalet avec balcon et rosettes décoratives" />
+          <div class="gallery-card-counter">1 / 2</div>
+          <div class="gallery-card-nav">
+            <span class="gallery-card-dot active"></span>
+            <span class="gallery-card-dot"></span>
+          </div>
         </div>
         <div class="gallery-card-info">
           <div>
@@ -1502,31 +1544,6 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="facades">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/25.jpg" alt="Chalet avec balcon et rosettes décoratives" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Balcon & rosettes</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="facades">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/26.jpg" alt="Bâtiment bardage gris et bois neuf" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Bardage mixte</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
 
       <div class="gallery-card fu" data-cat="renovation">
         <div class="gallery-card-img">
@@ -1568,9 +1585,23 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="renovation">
+      <div class="gallery-card gallery-card-group fu" data-cat="renovation facades"
+           data-titles="Vieux bois récupéré,Vieux bois &amp; montagne,Grange convertie,Terrasse couverte,Balcons village"
+           data-cats="Rénovation,Rénovation,Rénovation,Façades,Façades">
         <div class="gallery-card-img">
-          <img src="photos/realisations/31.jpg" alt="Chalet façade vieux bois récupéré" />
+          <img src="photos/realisations/31.jpg" alt="Chalet façade vieux bois récupéré" class="active" />
+          <img src="photos/realisations/32.jpg" alt="Chalet vieux bois vue sur les montagnes" />
+          <img src="photos/realisations/33.jpg" alt="Grange convertie en habitation" />
+          <img src="photos/realisations/34.jpg" alt="Terrasse couverte en bois ancien" />
+          <img src="photos/realisations/35.jpg" alt="Bâtiments village avec balcons en bois" />
+          <div class="gallery-card-counter">1 / 5</div>
+          <div class="gallery-card-nav">
+            <span class="gallery-card-dot active"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+          </div>
         </div>
         <div class="gallery-card-info">
           <div>
@@ -1581,74 +1612,24 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="renovation">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/32.jpg" alt="Chalet vieux bois vue sur les montagnes" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Rénovation</div>
-            <div class="gallery-card-title">Vieux bois & montagne</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="gallery-card fu" data-cat="renovation">
+      <div class="gallery-card gallery-card-group fu" data-cat="charpente"
+           data-titles="Construction neuve,Chantier en cours,Aménagement intérieur,Puits de lumière,Lambris plafond"
+           data-cats="Charpente,Charpente,Charpente,Charpente,Charpente">
         <div class="gallery-card-img">
-          <img src="photos/realisations/33.jpg" alt="Grange convertie en habitation" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Rénovation</div>
-            <div class="gallery-card-title">Grange convertie</div>
-            <div class="gallery-card-loc">Valais</div>
+          <img src="photos/realisations/39.jpg" alt="Construction neuve bois blond" class="active" />
+          <img src="photos/realisations/40.jpg" alt="Chantier chalet neuf en cours" />
+          <img src="photos/realisations/08.jpg" alt="Salle à manger avec plafond bois" />
+          <img src="photos/realisations/09.jpg" alt="Couloir puits de lumière plafond bois" />
+          <img src="photos/realisations/10.jpg" alt="Plafond lambrissé en bois neuf" />
+          <div class="gallery-card-counter">1 / 5</div>
+          <div class="gallery-card-nav">
+            <span class="gallery-card-dot active"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
+            <span class="gallery-card-dot"></span>
           </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="facades">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/34.jpg" alt="Terrasse couverte en bois ancien" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Terrasse couverte</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="facades">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/35.jpg" alt="Bâtiments village avec balcons en bois" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Balcons village</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="facades">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/37.jpg" alt="Chalet bois et pierre avec garage" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Façades</div>
-            <div class="gallery-card-title">Bois & pierre</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/39.jpg" alt="Construction neuve bois blond" />
         </div>
         <div class="gallery-card-info">
           <div>
@@ -1659,31 +1640,6 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/40.jpg" alt="Chantier chalet neuf en cours" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Chantier en cours</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="renovation">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/41.jpg" alt="Chalet rénové avec panneaux solaires" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Rénovation</div>
-            <div class="gallery-card-title">Rénovation & solaire</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
 
       <div class="gallery-card fu" data-cat="charpente">
         <div class="gallery-card-img">
@@ -1725,96 +1681,7 @@
         </div>
       </div>
 
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/03.jpg" alt="Plafond poutres anciennes en croix" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Poutres anciennes</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/04.jpg" alt="Escalier bois moderne multi-niveaux" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Escalier bois moderne</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/05.jpg" alt="Plafond poutres anciennes avec luminaire" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Charpente & luminaire</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/06.jpg" alt="Chambre avec poutres apparentes" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Poutres apparentes</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/08.jpg" alt="Salle à manger avec plafond bois" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Aménagement intérieur</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/09.jpg" alt="Couloir puits de lumière plafond bois" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Puits de lumière</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card fu" data-cat="charpente">
-        <div class="gallery-card-img">
-          <img src="photos/realisations/10.jpg" alt="Plafond lambrissé en bois neuf" />
-        </div>
-        <div class="gallery-card-info">
-          <div>
-            <div class="gallery-card-cat">Charpente</div>
-            <div class="gallery-card-title">Lambris plafond</div>
-            <div class="gallery-card-loc">Valais</div>
-          </div>
-        </div>
-      </div>
 
     </div><!-- /gallery-grid -->
   </div>
@@ -1909,6 +1776,8 @@
 
 <!-- ── JS ────────────────────────────────────── -->
 <script>
+  // ── Grouped card — no inline cycling, opens lightbox instead ──
+
   // Scroll animations
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -1930,39 +1799,6 @@
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Filter logic
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.gallery-card:not(.gallery-empty)');
-  const countEl = document.getElementById('count');
-  const emptyState = document.getElementById('emptyState');
-
-  function updateCount() {
-    const visible = document.querySelectorAll('.gallery-card:not(.gallery-empty):not(.hidden)');
-    countEl.textContent = visible.length;
-    if (emptyState) {
-      // hide empty state if there are real cards
-      if (cards.length > 0) emptyState.classList.remove('show');
-    }
-  }
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        if (filter === 'all' || card.dataset.cat === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-      updateCount();
-    });
-  });
-
-  // Initial count
-  updateCount();
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -2005,12 +1841,16 @@
   const lbImg = lightbox.querySelector('img');
   const lbCaption = lightbox.querySelector('.lightbox-caption');
   let lbIndex = 0;
+  let lbMode = 'normal'; // 'normal' or 'group'
+  let lbGroupImgs = [];
+  let lbGroupTitles = [];
 
   function getVisibleCards() {
     return [...document.querySelectorAll('.gallery-card:not(.hidden)')];
   }
 
   function openLightbox(index) {
+    lbMode = 'normal';
     const visible = getVisibleCards();
     if (index < 0 || index >= visible.length) return;
     lbIndex = index;
@@ -2024,12 +1864,38 @@
     document.body.style.overflow = 'hidden';
   }
 
+  function openGroupLightbox(card, startIndex) {
+    lbMode = 'group';
+    lbGroupImgs = [...card.querySelectorAll('.gallery-card-img img')];
+    lbGroupTitles = card.dataset.titles.split(',');
+    lbIndex = startIndex || 0;
+    lbImg.src = lbGroupImgs[lbIndex].src;
+    lbImg.alt = lbGroupImgs[lbIndex].alt;
+    lbCaption.textContent = lbGroupTitles[lbIndex] || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function navigateLightbox(dir) {
+    if (lbMode === 'group') {
+      lbIndex = (lbIndex + dir + lbGroupImgs.length) % lbGroupImgs.length;
+      lbImg.src = lbGroupImgs[lbIndex].src;
+      lbImg.alt = lbGroupImgs[lbIndex].alt;
+      lbCaption.textContent = lbGroupTitles[lbIndex] || '';
+    } else {
+      const visible = getVisibleCards();
+      openLightbox((lbIndex + dir + visible.length) % visible.length);
+    }
+  }
+
   function closeLightbox() {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
   }
 
+  // Regular cards → normal lightbox
   document.querySelectorAll('.gallery-card').forEach(card => {
+    if (card.classList.contains('gallery-card-group')) return;
     card.addEventListener('click', () => {
       const visible = getVisibleCards();
       const idx = visible.indexOf(card);
@@ -2037,16 +1903,21 @@
     });
   });
 
+  // Grouped card → group lightbox
+  document.querySelectorAll('.gallery-card-group').forEach(card => {
+    card.addEventListener('click', () => {
+      openGroupLightbox(card, 0);
+    });
+  });
+
   lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
   lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {
     e.stopPropagation();
-    const visible = getVisibleCards();
-    openLightbox((lbIndex - 1 + visible.length) % visible.length);
+    navigateLightbox(-1);
   });
   lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => {
     e.stopPropagation();
-    const visible = getVisibleCards();
-    openLightbox((lbIndex + 1) % visible.length);
+    navigateLightbox(1);
   });
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
@@ -2054,14 +1925,8 @@
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') {
-      const visible = getVisibleCards();
-      openLightbox((lbIndex - 1 + visible.length) % visible.length);
-    }
-    if (e.key === 'ArrowRight') {
-      const visible = getVisibleCards();
-      openLightbox((lbIndex + 1) % visible.length);
-    }
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
   });
 </script>
 </body>
