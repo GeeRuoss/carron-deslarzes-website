@@ -29,7 +29,7 @@ html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
   --light:   #c8c8c8;
   --pale:    #f0f0f0;
   --white:   #ffffff;
-  --accent:  #3a7d44; /* vert "+" du rapport */
+  --accent:  #30aa3b; /* vert "+" du rapport */
   --border:  rgba(0,0,0,0.1);
 }
 
@@ -661,12 +661,6 @@ footer {
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .foot-logo svg { height: 30px; width: auto; }
-.foot-logo svg path, .foot-logo svg polygon {
-  fill: rgba(255,255,255,0.7) !important;
-}
-.foot-logo svg rect {
-  fill: rgba(255,255,255,0.12) !important;
-}
 .foot-nav {
   display: flex; gap: 32px; list-style: none;
 }
