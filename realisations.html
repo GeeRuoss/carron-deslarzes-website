@@ -1218,6 +1218,24 @@
       border-radius: 20px;
       z-index: 2;
     }
+    .gallery-card-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,0,0,0.45);
+      color: #fff; border: none; cursor: pointer;
+      font-size: 18px; line-height: 36px; text-align: center;
+      z-index: 3; opacity: 0; transition: opacity 0.3s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .gallery-card-arrow.prev { left: 10px; }
+    .gallery-card-arrow.next { right: 10px; }
+    .gallery-card-group:hover .gallery-card-arrow,
+    .gallery-card-group .gallery-card-arrow.visible {
+      opacity: 1;
+    }
+    @media (max-width: 768px) {
+      .gallery-card-group .gallery-card-arrow { opacity: 1; }
+    }
 
     /* Placeholder (no image) */
     .gallery-placeholder {
@@ -1267,14 +1285,21 @@
     .lightbox-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 48px; height: 48px;
-      background: none; border: 1px solid rgba(255,255,255,0.2);
-      color: #fff; font-size: 20px; cursor: pointer;
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      color: #fff; font-size: 22px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 12;
     }
-    .lightbox-nav:hover { border-color: rgba(255,255,255,0.6); }
-    .lightbox-prev { left: 24px; }
-    .lightbox-next { right: 24px; }
+    .lightbox-nav:hover { background: rgba(0,0,0,0.7); border-color: rgba(255,255,255,0.6); }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    @media (max-width: 768px) {
+      .lightbox-nav { width: 40px; height: 40px; font-size: 20px; }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+    }
     .lightbox-caption {
       position: absolute; bottom: 24px; left: 50%;
       transform: translateX(-50%);
