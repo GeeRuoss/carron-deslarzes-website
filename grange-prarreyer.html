@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grange de Prarreyer — Carron + Deslarzes</title>
+  <meta name="description" content="Plans de la rénovation d'une grange traditionnelle a Prarreyer, commune de Bagnes. Projet Carron + Deslarzes." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://carron-deslarzes.ch/grange-prarreyer" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <style>
+    @font-face {
+      font-family: 'NewBlack';
+      src: url('fonts/NewBlackTypeface-Regular.woff2') format('woff2'),
+           url('fonts/NewBlackTypeface-Regular.woff') format('woff');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'NewBlack';
+      src: url('fonts/NewBlackTypeface-UltraLight.woff2') format('woff2'),
+           url('fonts/NewBlackTypeface-UltraLight.woff') format('woff');
+      font-weight: 100; font-style: normal; font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+    :root {
+      --black: #0a0a0a; --dark: #141414; --mid: #3a3a3a; --muted: #787878;
+      --light: #c8c8c8; --pale: #f0f0f0; --white: #ffffff; --accent: #30aa3b;
+      --border: rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'NewBlack', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 100; color: var(--black); background: var(--white);
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'NewBlack', sans-serif; font-weight: 400; line-height: 1; letter-spacing: -0.02em; }
+    p { font-weight: 100; line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: auto; }
+    .light { font-weight: 100; color: var(--muted); }
+    .label { font-size: 10px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 88px; background: var(--white);
+      border-bottom: 1px solid var(--border);
+      transition: height 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled { height: 68px; box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+    .nav-logo { display: flex; align-items: center; height: 48px; }
+    .nav-logo svg { height: 48px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--mid); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta {
+      background: var(--black) !important; color: var(--white) !important;
+      padding: 9px 20px !important; letter-spacing: 0.15em !important;
+    }
+    .nav-cta:hover { background: var(--mid) !important; }
+    .nav-burger {
+      display: none; flex-direction: column; gap: 6px;
+      background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001;
+    }
+    .nav-burger span { display: block; width: 28px; height: 1.5px; background: var(--black); transition: all 0.3s; }
+    .nav-burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-burger.active span:nth-child(2) { opacity: 0; }
+    .nav-burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 999; background: var(--white);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; }
+    .mobile-menu a {
+      font-size: 18px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    /* ── BUTTONS ──────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'NewBlack', sans-serif;
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 14px 28px; transition: all 0.22s ease;
+      cursor: pointer; border: none;
+    }
+    .btn-dark { background: var(--black); color: var(--white); }
+    .btn-dark:hover { background: var(--mid); }
+    .btn-outline { background: transparent; color: var(--black); border: 1px solid var(--border); }
+    .btn-outline:hover { background: var(--black); color: var(--white); }
+
+    /* ── CONTAINER ────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ───────────────────────────────── */
+    .plans-header {
+      padding: 140px 64px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .plans-header .eyebrow {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+    .plans-header .eyebrow .line { width: 24px; height: 1px; background: var(--accent); }
+    .plans-header h1 { font-size: clamp(36px, 4vw, 56px); margin-bottom: 20px; }
+    .plans-header-inner { max-width: 1100px; margin: 0 auto; }
+    .plans-header p { max-width: 640px; color: var(--muted); font-size: 16px; }
+    .plans-header .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 32px; font-size: 11px; font-weight: 400;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+      transition: color 0.2s;
+    }
+    .plans-header .back-link:hover { color: var(--black); }
+
+    /* ── PLANS GRID ──────────────────────────── */
+    .plans-grid {
+      max-width: 1100px; margin: 0 auto;
+      padding: 64px;
+      display: flex; flex-direction: column; gap: 64px;
+    }
+    .plan-item {
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .plan-item img {
+      width: 100%; height: auto;
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .plan-item img:hover { transform: scale(1.02); }
+    .plan-label {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .plan-label h3 { font-size: 18px; }
+    .plan-label .plan-num {
+      font-size: 11px; font-weight: 400; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase;
+    }
+
+    /* ── CTA ──────────────────────────────────── */
+    .plans-cta {
+      max-width: 1100px; margin: 0 auto;
+      padding: 64px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .plans-cta h3 { font-size: clamp(22px, 2.5vw, 32px); }
+    .plans-cta p { color: var(--muted); margin-top: 8px; }
+
+    /* ── LIGHTBOX ─────────────────────────────── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lightbox img {
+      max-width: 92vw; max-height: 90vh; object-fit: contain;
+      transform: scale(0.95); transition: transform 0.3s ease;
+    }
+    .lightbox.open img { transform: scale(1); }
+    .lightbox-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 48px; height: 48px;
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%; color: #fff; font-size: 26px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 12; -webkit-tap-highlight-color: transparent;
+    }
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%; color: #fff; font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 12;
+    }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-caption {
+      position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer { background: var(--black); }
+    .foot-main { padding: 48px 64px; }
+    .foot-inner { display: flex; justify-content: space-between; align-items: flex-start; }
+    .foot-nav { display: flex; gap: 32px; list-style: none; }
+    .foot-nav a { font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .foot-nav a:hover { color: var(--white); }
+    .foot-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+    .foot-copy { font-size: 11px; font-weight: 100; color: rgba(255,255,255,0.25); letter-spacing: 0.05em; }
+    .foot-plus-row { display: flex; gap: 12px; }
+    .foot-plus-row span { font-size: 16px; color: rgba(255,255,255,0.08); font-weight: 400; }
+
+    /* ── FADE-UP ──────────────────────────────── */
+    .fu { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fu.vis { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; } .d4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 960px) {
+      nav { padding: 0 20px; height: 64px; }
+      nav.scrolled { height: 56px; }
+      .nav-logo { height: 44px; }
+      .nav-logo svg { height: 44px; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .foot-main { padding: 36px 24px; }
+      .foot-inner { flex-direction: column; gap: 24px; text-align: center; }
+      .foot-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .foot-nav { flex-wrap: wrap; justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      .plans-header { padding: 100px 24px 40px; }
+      .plans-grid { padding: 24px; gap: 32px; }
+      .plan-label { padding: 16px 20px; }
+      .plan-label h3 { font-size: 15px; }
+      .plans-cta { padding: 40px 24px; flex-direction: column; text-align: center; }
+      .foot-main { padding: 28px 20px; }
+      .foot-nav { flex-direction: column; gap: 16px; }
+      .lightbox-nav { width: 40px; height: 40px; font-size: 20px; }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-logo">
+    <svg style="height:48px;width:auto;" id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 585.76 127.19">
+<g id="Calque_1-2" data-name="Calque 1">
+    <g>
+      <g>
+        <g>
+          <g>
+            <path fill="#080709" d="M230.97,49.93c-1.91,3.05-4.58,5.46-8.02,7.24s-7.53,2.67-12.28,2.67c-5.06,0-9.54-1.1-13.44-3.29-3.9-2.19-6.92-5.28-9.06-9.26-2.14-3.97-3.22-8.55-3.22-13.71s1.07-9.82,3.22-13.83c2.14-4,5.16-7.1,9.06-9.3,3.9-2.19,8.38-3.29,13.44-3.29,4.75,0,8.86.88,12.32,2.63,3.46,1.76,6.13,4.12,8.02,7.09,1.89,2.97,2.98,6.31,3.29,10.03h-8.29c-.46-3.56-2.09-6.4-4.88-8.52-2.79-2.12-6.28-3.18-10.46-3.18-3.31,0-6.29.76-8.95,2.29-2.66,1.52-4.74,3.67-6.24,6.43-1.5,2.76-2.25,5.98-2.25,9.64s.75,6.81,2.25,9.57c1.5,2.76,3.58,4.91,6.24,6.43,2.66,1.52,5.64,2.28,8.95,2.28,4.44,0,7.99-1.14,10.65-3.41,2.66-2.27,4.22-5.19,4.69-8.75h8.37c-.36,3.77-1.5,7.18-3.41,10.23Z"/>
+            <path fill="#080709" d="M256.61,7.94h16.65l17.58,51.13h-9.14l-5.97-16.42h-21.77l-5.81,16.42h-9.14l17.59-51.13ZM273.5,34.67l-7.9-23.16h-1.32l-7.9,23.16h17.12Z"/>
+            <path fill="#080709" d="M297.04,7.94h20.38c3.3,0,6.27.66,8.91,1.97,2.63,1.32,4.7,3.19,6.2,5.62,1.5,2.43,2.25,5.22,2.25,8.37,0,3.62-.97,6.39-2.9,8.33-1.94,1.94-4.41,3.17-7.4,3.68v.7c2.84,0,5.11.52,6.82,1.55,1.7,1.03,2.58,2.87,2.63,5.5l.54,15.42h-8.44l-.39-16.58c-.05-.77-.26-1.32-.62-1.63-.36-.31-1.01-.46-1.94-.46h-17.66v18.67h-8.37V7.94ZM324.12,30.33c1.52-1.39,2.28-3.18,2.28-5.35,0-2.43-.8-4.54-2.4-6.35-1.6-1.81-3.54-2.71-5.81-2.71h-12.78v16.5h12.78c2.43,0,4.4-.7,5.93-2.09Z"/>
+            <path fill="#080709" d="M340.97,7.94h20.38c3.3,0,6.27.66,8.91,1.97,2.63,1.32,4.7,3.19,6.2,5.62,1.5,2.43,2.25,5.22,2.25,8.37,0,3.62-.97,6.39-2.9,8.33-1.94,1.94-4.41,3.17-7.4,3.68v.7c2.84,0,5.11.52,6.82,1.55,1.7,1.03,2.58,2.87,2.63,5.5l.54,15.42h-8.44l-.39-16.58c-.05-.77-.26-1.32-.62-1.63-.36-.31-1.01-.46-1.94-.46h-17.66v18.67h-8.37V7.94ZM368.04,30.33c1.52-1.39,2.28-3.18,2.28-5.35,0-2.43-.8-4.54-2.4-6.35-1.6-1.81-3.54-2.71-5.81-2.71h-12.78v16.5h12.78c2.43,0,4.4-.7,5.93-2.09Z"/>
+            <path fill="#080709" d="M424.79,10.5c3.92,2.22,6.96,5.33,9.1,9.33,2.14,4,3.22,8.56,3.22,13.67s-1.07,9.67-3.22,13.67c-2.14,4-5.18,7.11-9.1,9.33-3.93,2.22-8.52,3.33-13.79,3.33s-9.86-1.11-13.79-3.33c-3.92-2.22-6.96-5.33-9.1-9.33-2.14-4-3.22-8.56-3.22-13.67s1.07-9.67,3.22-13.67c2.14-4,5.18-7.11,9.1-9.33,3.93-2.22,8.52-3.33,13.79-3.33s9.86,1.11,13.79,3.33ZM398.02,20.06c-3.18,3.23-4.77,7.71-4.77,13.44s1.59,10.21,4.77,13.44c3.17,3.23,7.5,4.84,12.98,4.84,3.46,0,6.53-.74,9.22-2.21,2.69-1.47,4.78-3.58,6.28-6.31,1.5-2.74,2.25-5.99,2.25-9.76s-.75-7.02-2.25-9.76c-1.5-2.74-3.59-4.84-6.28-6.31-2.68-1.47-5.76-2.21-9.22-2.21-5.48,0-9.8,1.61-12.98,4.84Z"/>
+            <path fill="#080709" d="M443.3,7.94h15.73l20.22,48.26h.85V7.94h8.37v51.13h-16.73l-19.06-47.41h-1.01v47.41h-8.37V7.94Z"/>
+          </g>
+          <g>
+            <path fill="#080709" d="M184.95,70.64h17.43c8,0,14.19,2.09,18.55,6.27,4.36,4.18,6.55,10.61,6.55,19.29s-2.18,15.11-6.55,19.29c-4.36,4.18-10.55,6.27-18.55,6.27h-17.43v-51.13ZM215.13,109.53c2.66-2.84,3.99-7.28,3.99-13.32s-1.33-10.48-3.99-13.32c-2.66-2.84-6.37-4.26-11.11-4.26h-10.69v35.17h10.69c4.75,0,8.45-1.42,11.11-4.26Z"/>
+            <path fill="#080709" d="M233.68,70.64h33.78v7.98h-25.41v13.09h23.86v7.98h-23.86v14.1h25.72v7.98h-34.09v-51.13Z"/>
+            <path fill="#080709" d="M294.64,77.92c-3.36,0-6.02.59-7.98,1.78-1.96,1.19-2.94,3-2.94,5.42,0,1.29.28,2.35.85,3.18.57.83,1.54,1.52,2.9,2.09,1.37.57,3.34,1.08,5.93,1.55l5.81,1.08c4.8.88,8.64,2.43,11.5,4.65,2.87,2.22,4.3,5.55,4.3,9.99,0,4.91-1.81,8.6-5.42,11.08-3.62,2.48-8.37,3.72-14.25,3.72-3.87,0-7.4-.66-10.58-1.98-3.17-1.32-5.75-3.36-7.71-6.12-1.96-2.76-3-6.16-3.1-10.19h8.37c.21,3.82,1.45,6.5,3.72,8.02,2.27,1.52,5.37,2.29,9.3,2.29,7.54,0,11.31-2.27,11.31-6.82,0-3.51-3.44-5.86-10.31-7.05l-5.89-1.01c-4.49-.82-8.13-2.28-10.92-4.38-2.79-2.09-4.18-5.43-4.18-10.03,0-3.25.85-6.03,2.56-8.33,1.7-2.3,4.01-4.04,6.93-5.23,2.92-1.19,6.19-1.78,9.8-1.78,5.63,0,10.29,1.41,13.98,4.22,3.69,2.81,5.62,6.93,5.77,12.36h-8.6c-.57-5.68-4.29-8.52-11.16-8.52Z"/>
+            <path fill="#080709" d="M321.21,70.64h8.37v43.15h24.86v7.98h-33.23v-51.13Z"/>
+            <path fill="#080709" d="M376.68,70.64h16.65l17.58,51.13h-9.14l-5.97-16.42h-21.77l-5.81,16.42h-9.14l17.59-51.13ZM393.57,97.37l-7.9-23.16h-1.32l-7.9,23.16h17.12Z"/>
+            <path fill="#080709" d="M417.12,70.64h20.38c3.3,0,6.27.66,8.91,1.97,2.63,1.32,4.7,3.19,6.2,5.62,1.5,2.43,2.25,5.22,2.25,8.37,0,3.62-.97,6.39-2.9,8.33-1.94,1.94-4.41,3.17-7.4,3.68v.7c2.84,0,5.11.52,6.82,1.55,1.7,1.03,2.58,2.87,2.63,5.5l.54,15.42h-8.44l-.39-16.58c-.05-.77-.26-1.32-.62-1.63-.36-.31-1.01-.46-1.94-.46h-17.66v18.67h-8.37v-51.13ZM444.19,93.03c1.52-1.39,2.28-3.18,2.28-5.35,0-2.43-.8-4.54-2.4-6.35-1.6-1.81-3.54-2.71-5.81-2.71h-12.78v16.5h12.78c2.43,0,4.4-.7,5.93-2.09Z"/>
+            <path fill="#080709" d="M461.04,78.62v-7.98h36.95v9.3l-27.19,33.85h27.42v7.98h-36.95v-9.3l27.11-33.85h-27.35Z"/>
+            <path fill="#080709" d="M504.42,70.64h33.78v7.98h-25.41v13.09h23.86v7.98h-23.86v14.1h25.72v7.98h-34.09v-51.13Z"/>
+            <path fill="#080709" d="M565.38,77.92c-3.36,0-6.02.59-7.98,1.78-1.96,1.19-2.94,3-2.94,5.42,0,1.29.28,2.35.85,3.18.57.83,1.54,1.52,2.9,2.09,1.37.57,3.34,1.08,5.93,1.55l5.81,1.08c4.8.88,8.64,2.43,11.5,4.65,2.87,2.22,4.3,5.55,4.3,9.99,0,4.91-1.81,8.6-5.42,11.08-3.62,2.48-8.37,3.72-14.25,3.72-3.87,0-7.4-.66-10.58-1.98-3.17-1.32-5.75-3.36-7.71-6.12-1.96-2.76-3-6.16-3.1-10.19h8.37c.21,3.82,1.45,6.5,3.72,8.02,2.27,1.52,5.37,2.29,9.3,2.29,7.54,0,11.31-2.27,11.31-6.82,0-3.51-3.44-5.86-10.31-7.05l-5.89-1.01c-4.49-.82-8.13-2.28-10.92-4.38-2.79-2.09-4.18-5.43-4.18-10.03,0-3.25.85-6.03,2.56-8.33,1.7-2.3,4.01-4.04,6.93-5.23,2.92-1.19,6.19-1.78,9.8-1.78,5.63,0,10.29,1.41,13.98,4.22,3.69,2.81,5.62,6.93,5.77,12.36h-8.6c-.57-5.68-4.29-8.52-11.16-8.52Z"/>
+          </g>
+        </g>
+        <rect fill="#080709" x="519.42" y="14.29" width="5.32" height="38.58"/>
+        <rect fill="#080709" x="502.79" y="30.92" width="38.58" height="5.32"/>
+      </g>
+      <g>
+        <rect fill="#c17d1a" x="55.99" width="41.99" height="18"/>
+        <rect x="55.99" y="109.19" width="41.99" height="18"/>
+        <rect fill="#30aa3b" x="29.92" y="36.4" width="94.14" height="18"/>
+        <rect y="72.79" width="153.98" height="18"/>
+      </g>
+    </g>
+  </g>
+</svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="entreprise">L'Entreprise</a></li>
+    <li><a href="savoir-faire">Savoir-Faire</a></li>
+    <li><a href="realisations">Réalisations</a></li>
+    <li><a href="immobilier">Immobilier</a></li>
+    <li><a href="contact" class="nav-cta">Contactez-nous</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="entreprise">L'Entreprise</a>
+  <a href="savoir-faire">Savoir-Faire</a>
+  <a href="realisations">Réalisations</a>
+  <a href="immobilier">Immobilier</a>
+  <a href="contact" class="btn btn-dark nav-cta">Contactez-nous</a>
+</div>
+
+
+<!-- ── HEADER ────────────────────────────────── -->
+<div class="plans-header">
+  <div class="plans-header-inner">
+    <div class="eyebrow fu">
+      <div class="line"></div>
+      <span class="label">Nouveau projet</span>
+    </div>
+    <h1 class="fu d1">Grange<br><span class="light">de Prarreyer</span></h1>
+    <p class="fu d2">
+      Transformation d'une grange traditionnelle en habitation de caractere a Prarreyer, dans la commune de Bagnes. Un projet qui preserve le charme de la structure existante tout en offrant un interieur contemporain sur trois niveaux, avec terrasse panoramique, carnotzet et couvert a voiture.
+    </p>
+    <a href="immobilier" class="back-link fu d3">&larr; Retour a l'immobilier</a>
+  </div>
+</div>
+
+
+<!-- ── PLANS ─────────────────────────────────── -->
+<div class="plans-grid">
+  <div class="plan-item fu">
+    <img src="photos/grange-prarreyer/plan-1.jpg" alt="Plan rez-de-chaussée et entresol" data-index="0" />
+    <div class="plan-label">
+      <h3>Rez-de-chaussee <span class="light">& entresol</span></h3>
+      <span class="plan-num">01</span>
+    </div>
+  </div>
+
+  <div class="plan-item fu d1">
+    <img src="photos/grange-prarreyer/plan-2.jpg" alt="Plan étage" data-index="1" />
+    <div class="plan-label">
+      <h3>Etage <span class="light">chambres & balcon</span></h3>
+      <span class="plan-num">02</span>
+    </div>
+  </div>
+
+  <div class="plan-item fu d2">
+    <img src="photos/grange-prarreyer/plan-3.jpg" alt="Coupes A-A et B-B" data-index="2" />
+    <div class="plan-label">
+      <h3>Coupes <span class="light">transversales</span></h3>
+      <span class="plan-num">03</span>
+    </div>
+  </div>
+
+  <div class="plan-item fu d3">
+    <img src="photos/grange-prarreyer/plan-4.jpg" alt="Façades Nord et Sud" data-index="3" />
+    <div class="plan-label">
+      <h3>Facades <span class="light">Nord & Sud</span></h3>
+      <span class="plan-num">04</span>
+    </div>
+  </div>
+
+  <div class="plan-item fu d4">
+    <img src="photos/grange-prarreyer/plan-5.jpg" alt="Façades Est et Ouest" data-index="4" />
+    <div class="plan-label">
+      <h3>Facades <span class="light">Est & Ouest</span></h3>
+      <span class="plan-num">05</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── CTA ───────────────────────────────────── -->
+<div class="plans-cta">
+  <div>
+    <h3 class="fu">Interesse par ce projet<span class="light"> ?</span></h3>
+    <p class="fu d1">Contactez-nous pour en savoir plus ou organiser une visite du terrain.</p>
+  </div>
+  <a href="contact" class="btn btn-dark fu d2">Nous contacter &rarr;</a>
+</div>
+
+
+<!-- ── FOOTER ────────────────────────────────── -->
+<footer>
+  <div class="foot-main">
+    <div class="foot-inner">
+      <div class="foot-logo">
+        <svg style="height:30px;width:auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158.27 156.54">
+  <g>
+    <g>
+      <polygon fill="#fff" points="0 95.62 17.64 99.3 17.64 120.97 0 117.28 0 95.62"/>
+      <polygon fill="#fff" points="158.27 78.83 158.27 100.51 27.2 121.21 27.2 99.54 158.27 78.83"/>
+    </g>
+    <g>
+      <polygon fill="#30aa3b" points="26.29 48.2 43.93 51.88 43.93 73.56 26.29 69.87 26.29 48.2"/>
+      <polygon fill="#30aa3b" points="132.52 40.12 132.52 61.78 53.49 73.82 53.49 52.14 132.52 40.12"/>
+    </g>
+    <g>
+      <polygon fill="#c17d1a" points="49.69 1.08 67.4 4.77 67.4 26.44 49.69 22.74 49.69 1.08"/>
+      <polygon fill="#c17d1a" points="109.85 0 109.85 21.67 76.97 26.68 76.97 5.01 109.85 0"/>
+    </g>
+    <g>
+      <polygon fill="#fff" points="49.06 130.91 66.69 134.6 66.69 156.27 49.06 152.59 49.06 130.91"/>
+      <polygon fill="#fff" points="109.21 129.85 109.21 151.52 76.26 156.54 76.26 134.86 109.21 129.85"/>
+    </g>
+  </g>
+</svg>
+      </div>
+      <ul class="foot-nav">
+        <li><a href="entreprise">L'Entreprise</a></li>
+        <li><a href="savoir-faire">Prestations</a></li>
+        <li><a href="realisations">Réalisations</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <p class="foot-copy">&copy; 2025&ndash;2026 Carron + Deslarzes SA &middot; Le Châble, Valais &middot; Charpente artisanale depuis 2008</p>
+      <div class="foot-plus-row">
+        <span>+</span><span>+</span><span>+</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Fade-up
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+  setTimeout(() => {
+    document.querySelectorAll('.fu:not(.vis)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('vis');
+    });
+  }, 150);
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // Lightbox
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  lightbox.innerHTML = `
+    <button class="lightbox-close">&times;</button>
+    <button class="lightbox-nav lightbox-prev">&#8592;</button>
+    <button class="lightbox-nav lightbox-next">&#8594;</button>
+    <img src="" alt="" />
+    <div class="lightbox-caption"></div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lbImg = lightbox.querySelector('img');
+  const lbCaption = lightbox.querySelector('.lightbox-caption');
+  const plans = [...document.querySelectorAll('.plan-item')];
+  let lbIndex = 0;
+
+  function openLb(idx) {
+    lbIndex = idx;
+    const img = plans[idx].querySelector('img');
+    const title = plans[idx].querySelector('h3');
+    lbImg.src = img.src;
+    lbCaption.textContent = title ? title.textContent : '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function navLb(dir) {
+    lbIndex = (lbIndex + dir + plans.length) % plans.length;
+    openLb(lbIndex);
+  }
+
+  plans.forEach((item, i) => {
+    item.querySelector('img').addEventListener('click', () => openLb(i));
+  });
+
+  lightbox.querySelector('.lightbox-close').addEventListener('click', () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); navLb(-1); });
+  lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); navLb(1); });
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; } });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') navLb(-1);
+    if (e.key === 'ArrowRight') navLb(1);
+  });
+
+  // Touch swipe lightbox
+  let lbTouchX = 0, lbSwiping = false;
+  lightbox.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; lbSwiping = false; }, { passive: true });
+  lightbox.addEventListener('touchmove', e => { if (Math.abs(e.touches[0].clientX - lbTouchX) > 15) lbSwiping = true; }, { passive: true });
+  lightbox.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - lbTouchX;
+    if (lbSwiping && Math.abs(dx) > 40) { navLb(dx < 0 ? 1 : -1); e.preventDefault(); }
+  });
+</script>
+</body>
+</html>
