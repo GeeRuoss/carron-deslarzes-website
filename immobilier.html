@@ -204,6 +204,20 @@
     .svc-block-photo-badge.sold {
       background: var(--accent);
     }
+    .svc-block-photo-badge.new {
+      background: var(--accent);
+    }
+    .new-banner {
+      position: absolute; top: 36px; right: -40px;
+      background: var(--accent); color: var(--white);
+      padding: 8px 60px;
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      font-family: 'NewBlack', sans-serif;
+      transform: rotate(45deg);
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
     .sold-banner {
       position: absolute; top: 36px; right: -40px;
       background: var(--accent); color: var(--white);
@@ -524,7 +538,32 @@
 </div>
 
 
-<!-- ── BIEN 01 — LES COLCHIQUES ──────────────── -->
+<!-- ── BIEN 01 — GRANGE PRARREYER (NOUVEAU) ──── -->
+<div class="svc-block" id="grange-prarreyer">
+  <div class="svc-block-photo fu" style="overflow:hidden;">
+    <img src="photos/grange-prarreyer/plan-4.jpg" alt="Rénovation grange — Prarreyer, facades" style="object-fit:contain;background:#fff;" />
+    <div class="svc-block-photo-badge new">Nouveau</div>
+    <div class="new-banner">NOUVEAU</div>
+  </div>
+  <div class="svc-block-content">
+    <div class="svc-block-index fu">01 — Nouveau projet</div>
+    <h2 class="fu d1">Grange<br><span class="light">de Prarreyer</span></h2>
+    <p class="svc-block-desc fu d2">
+      Transformation complète d'une grange traditionnelle en habitation de caractère a Prarreyer, dans la commune de Bagnes. Un projet qui allie le charme de la structure existante a une conception contemporaine sur trois niveaux, avec terrasse panoramique et couvert a voiture.
+    </p>
+    <ul class="svc-block-list fu d3">
+      <li>3 niveaux : entresol, rez-de-chaussée, étage</li>
+      <li>Séjour ouvert avec cuisine et coin repas</li>
+      <li>2 chambres, dressing et balcon</li>
+      <li>Cave, carnotzet et buanderie</li>
+      <li>Terrasse et couvert a voiture</li>
+    </ul>
+    <a href="contact" class="btn btn-dark fu d4" style="align-self:flex-start;">Demander les plans →</a>
+  </div>
+</div>
+
+
+<!-- ── BIEN 02 — LES COLCHIQUES ──────────────── -->
 <div class="svc-block" id="a-vendre">
   <div class="svc-block-photo fu">
     <img src="photos/realisations/07.jpg" alt="Les Colchiques — Bruson" />
@@ -532,7 +571,7 @@
     <div class="sold-banner">VENDU</div>
   </div>
   <div class="svc-block-content">
-    <div class="svc-block-index fu">01 — Vendu</div>
+    <div class="svc-block-index fu">02 — Vendu</div>
     <h2 class="fu d1">Les<br><span class="light">Colchiques</span></h2>
     <p class="svc-block-desc fu d2">
       Construction de 5 appartements et d'un bureau sur parcelle 13'696 à Bruson sur la Commune de Bagnes. Appartement No 11 — Étage. Un développement immobilier de standing situé à 1 080 m d'altitude, avec des vues exceptionnelles sur les Alpes valaisannes.
@@ -540,7 +579,6 @@
     <ul class="svc-block-list fu d3">
       <li>5 appartements neufs + bureau</li>
       <li>Parcelle de 13'696 m² à Bruson</li>
-      <li>Appartement N° 11 disponible — Étage</li>
       <li>Construction ossature bois artisanale</li>
       <li>À 10 min de Verbier et des pistes</li>
     </ul>
@@ -557,7 +595,7 @@
     <div class="sold-banner">COMPLET</div>
   </div>
   <div class="svc-block-content">
-    <div class="svc-block-index fu">02 — Complet</div>
+    <div class="svc-block-index fu">03 — Complet</div>
     <h2 class="fu d1">Biens<br><span class="light">locatifs</span></h2>
     <p class="svc-block-desc fu d2">
       De nouveaux biens locatifs seront prochainement disponibles dans la région de Bruson et Bagnes. Enregistrez votre intérêt pour être informé en priorité des nouvelles opportunités.
@@ -572,14 +610,14 @@
 </div>
 
 
-<!-- ── BIEN 03 — TERRAINS ────────────────────── -->
+<!-- ── BIEN 04 — TERRAINS ────────────────────── -->
 <div class="svc-block" id="terrains">
   <div class="svc-block-photo fu">
     <img src="photos/DSC09690.jpg" alt="Terrain à bâtir — Bruson, Valais" />
     <div class="svc-block-photo-badge">Terrains</div>
   </div>
   <div class="svc-block-content">
-    <div class="svc-block-index fu">03 — Terrains</div>
+    <div class="svc-block-index fu">04 — Terrains</div>
     <h2 class="fu d1">Construire<br><span class="light">sur mesure</span></h2>
     <p class="svc-block-desc fu d2">
       Nous disposons de parcelles dans la région de Bruson et Bagnes. Constructeur et propriétaire à la fois, nous vous offrons un avantage unique : concevoir et bâtir votre chalet ou maison à ossature bois directement avec l'entreprise qui connaît le terrain.
