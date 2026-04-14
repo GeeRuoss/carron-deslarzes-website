@@ -1274,14 +1274,17 @@
     }
     .lightbox.open img { transform: scale(1); }
     .lightbox-close {
-      position: absolute; top: 24px; right: 24px;
-      width: 44px; height: 44px;
-      background: none; border: 1px solid rgba(255,255,255,0.2);
-      color: #fff; font-size: 24px; cursor: pointer;
+      position: absolute; top: 16px; right: 16px;
+      width: 48px; height: 48px;
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      color: #fff; font-size: 26px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      transition: border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 12;
+      -webkit-tap-highlight-color: transparent;
     }
-    .lightbox-close:hover { border-color: rgba(255,255,255,0.6); }
+    .lightbox-close:hover { background: rgba(0,0,0,0.7); border-color: rgba(255,255,255,0.6); }
     .lightbox-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 48px; height: 48px;
