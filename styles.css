@@ -1121,10 +1121,10 @@ footer {
   .nav-logo svg { height: 44px; }
   .nav-links { display: none; }
   .nav-burger { display: flex; }
-  .hero { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; grid-template-rows: 68px 1fr auto auto; }
   .hero-text { padding: 100px 24px 40px; grid-column: 1; }
   .hero-photo { grid-column: 1; grid-row: 3; min-height: 360px; }
-  .hero-bottom { grid-column: 1; padding: 24px; }
+  .hero-bottom { grid-column: 1; grid-row: 4; padding: 24px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .about { grid-template-columns: 1fr; }
   .about-text { padding: 48px 24px; }
