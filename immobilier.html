@@ -201,6 +201,20 @@
       padding: 10px 16px; font-size: 9px; font-weight: 400;
       letter-spacing: 0.2em; text-transform: uppercase;
     }
+    .svc-block-photo-badge.sold {
+      background: var(--accent);
+    }
+    .sold-banner {
+      position: absolute; top: 36px; right: -40px;
+      background: var(--accent); color: var(--white);
+      padding: 8px 60px;
+      font-size: 11px; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      font-family: 'NewBlack', sans-serif;
+      transform: rotate(45deg);
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
     .svc-block-content {
       padding: 64px 64px 64px 56px;
       display: flex; flex-direction: column; justify-content: center;
@@ -513,11 +527,12 @@
 <!-- ── BIEN 01 — LES COLCHIQUES ──────────────── -->
 <div class="svc-block" id="a-vendre">
   <div class="svc-block-photo fu">
-    <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/a397e6484e44456ea9baec99dbc61aa8_52-HoD0FQ.png" alt="Les Colchiques — Face Nord-Ouest" style="object-fit:contain;background:#fff;" />
-    <div class="svc-block-photo-badge">À Vendre</div>
+    <img src="photos/realisations/07.jpg" alt="Les Colchiques — Bruson" />
+    <div class="svc-block-photo-badge sold">Vendu</div>
+    <div class="sold-banner">VENDU</div>
   </div>
   <div class="svc-block-content">
-    <div class="svc-block-index fu">01 — À Vendre</div>
+    <div class="svc-block-index fu">01 — Vendu</div>
     <h2 class="fu d1">Les<br><span class="light">Colchiques</span></h2>
     <p class="svc-block-desc fu d2">
       Construction de 5 appartements et d'un bureau sur parcelle 13'696 à Bruson sur la Commune de Bagnes. Appartement No 11 — Étage. Un développement immobilier de standing situé à 1 080 m d'altitude, avec des vues exceptionnelles sur les Alpes valaisannes.
@@ -534,38 +549,15 @@
 </div>
 
 
-<!-- ── BIEN 02 — PLAN ────────────────────────── -->
-<div class="svc-block" id="plan">
-  <div class="svc-block-photo fu">
-    <img src="https://carron-deslarzes.ch/wp-content/uploads/2022/06/aea7a8a050274080929840acedbf3e98_V2.png" alt="Plan rez-de-chaussée Les Colchiques" style="object-fit:contain;background:#fff;" />
-    <div class="svc-block-photo-badge">Plans</div>
-  </div>
-  <div class="svc-block-content">
-    <div class="svc-block-index fu">02 — Plans</div>
-    <h2 class="fu d1">Plan<br><span class="light">rez-de-chaussée</span></h2>
-    <p class="svc-block-desc fu d2">
-      Charpente et structure réalisées par nos équipes selon nos standards artisanaux habituels. Finitions soignées, matériaux sélectionnés avec soin pour la durabilité en milieu alpin. Chaque appartement bénéficie d'agencements optimisés et de finitions haut de gamme.
-    </p>
-    <ul class="svc-block-list fu d3">
-      <li>Vue panoramique sur les Alpes</li>
-      <li>Finitions artisanales haut de gamme</li>
-      <li>Parkings et cave inclus</li>
-      <li>Descriptif complet sur demande</li>
-      <li>Visite sur rendez-vous</li>
-    </ul>
-    <a href="contact" class="btn btn-dark fu d4" style="align-self:flex-start;">Organiser une visite →</a>
-  </div>
-</div>
-
-
-<!-- ── BIEN 03 — À LOUER ─────────────────────── -->
+<!-- ── BIEN 02 — À LOUER (COMPLET) ────────────── -->
 <div class="svc-block" id="a-louer">
   <div class="svc-block-photo fu">
-    <img src="photos/DSC09676-Edit.jpg" alt="Biens à louer — Bruson" />
-    <div class="svc-block-photo-badge">À Louer</div>
+    <img src="photos/DSC09676-Edit.jpg" alt="Biens locatifs — Bruson" />
+    <div class="svc-block-photo-badge sold">Complet</div>
+    <div class="sold-banner">COMPLET</div>
   </div>
   <div class="svc-block-content">
-    <div class="svc-block-index fu">03 — À Louer</div>
+    <div class="svc-block-index fu">02 — Complet</div>
     <h2 class="fu d1">Biens<br><span class="light">locatifs</span></h2>
     <p class="svc-block-desc fu d2">
       De nouveaux biens locatifs seront prochainement disponibles dans la région de Bruson et Bagnes. Enregistrez votre intérêt pour être informé en priorité des nouvelles opportunités.
@@ -580,14 +572,14 @@
 </div>
 
 
-<!-- ── BIEN 04 — TERRAINS ────────────────────── -->
+<!-- ── BIEN 03 — TERRAINS ────────────────────── -->
 <div class="svc-block" id="terrains">
   <div class="svc-block-photo fu">
-    <img src="photos/DSC09652-Edit.jpg" alt="Terrain à bâtir — Bruson, Valais" />
+    <img src="photos/DSC09690.jpg" alt="Terrain à bâtir — Bruson, Valais" />
     <div class="svc-block-photo-badge">Terrains</div>
   </div>
   <div class="svc-block-content">
-    <div class="svc-block-index fu">04 — Terrains</div>
+    <div class="svc-block-index fu">03 — Terrains</div>
     <h2 class="fu d1">Construire<br><span class="light">sur mesure</span></h2>
     <p class="svc-block-desc fu d2">
       Nous disposons de parcelles dans la région de Bruson et Bagnes. Constructeur et propriétaire à la fois, nous vous offrons un avantage unique : concevoir et bâtir votre chalet ou maison à ossature bois directement avec l'entreprise qui connaît le terrain.
